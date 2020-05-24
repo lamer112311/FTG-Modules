@@ -53,7 +53,7 @@ class RttsMod(loader.Module):
         async with event.client.conversation(chat) as conv:
             try:
                 response = conv.wait_event(events.NewMessage(incoming=True,
-                                                             from_users=616484527))
+                                                             from_users=503174223))
                 if not self_mess:
                     await event.client.forward_messages(chat, reply_message)
                 else:
