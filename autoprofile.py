@@ -73,24 +73,24 @@ class AutoProfileMod(loader.Module):
            Удалить ебало или да - True/1/False/0, case sensitive"""
 
         if not pil_installed:
-            return await utils.answer(message, self.strings("Сука", message))
+            return await utils.answer(message, self.strings("missing_pil", message))
 
         if not await self.client.get_profile_photos("me", limit=1):
-            return await utils.answer(message, self.strings("хуй", message))
+            return await utils.answer(message, self.strings("missing_pfp", message))
 
         msg = utils.get_args(message)
         if len(msg) != 2:
-            return await utils.answer(message, self.strings("12312312903812938YOU_HACKER19247128471284612784612746124612", message))
+            return await utils.answer(message, self.strings("invalid_args", message))
 
         try:
             degrees = int(msg[0])
         except ValueError:
-            return await utils.answer(message, self.strings("Неправильно сука ух блять чистушки блять макушки сука  блять пидораси сука сукукукузкзукзузкзук Ты ПИДОР", message))
+            return await utils.answer(message, self.strings("invalid_degrees", message))
 
         try:
             delete_previous = ast.literal_eval(msg[1])
         except (ValueError, SyntaxError):
-            return await utils.answer(message, self.strings("УДАЛИ ТВАРЬ", message))
+            return await utils.answer(message, self.strings("invalid_delete", message))
 
         with BytesIO() as pfp:
             await self.client.download_profile_photo("me", file=pfp)
@@ -99,7 +99,7 @@ class AutoProfileMod(loader.Module):
             self.pfp_enabled = True
             pfp_degree = 0
             await self.allmodules.log("start_autopfp")
-            await utils.answer(message, self.strings("ЭНЕБЛЙД ЗЕРО ТУ СОСАТЬ МОЙ ХУЙ ТВАРЬ", message))
+            await utils.answer(message, self.strings("enabled_pfp", message))
 
             while self.pfp_enabled:
                 pfp_degree = (pfp_degree + degrees) % 360
@@ -120,7 +120,7 @@ class AutoProfileMod(loader.Module):
         """СТоп, сука, автохуй cmd."""
 
         if self.pfp_enabled is False:
-            return await utils.answer(message, self.strings("НЕ ЭНЕЙБЛКД ХУЙ", message))
+            return await utils.answer(message, self.strings("pfp_not_enabled", message))
         else:
             self.pfp_enabled = False
 
@@ -128,7 +128,7 @@ class AutoProfileMod(loader.Module):
                 await self.client.get_profile_photos("me", limit=1)
             ))
             await self.allmodules.log("stop_autopfp")
-            await utils.answer(message, self.strings("ДИСОЛЯТОР КУПИ", message))
+            await utils.answer(message, self.strings("pfp_disabled", message))
 
     async def autobiocmd(self, message):
         """Автоматически меняет вашу биологию Telegram с текущим временем, использовать:
@@ -136,15 +136,15 @@ class AutoProfileMod(loader.Module):
 
         msg = utils.get_args(message)
         if len(msg) != 1:
-            return await utils.answer(message, self.strings("ХУХЙХЦХЦХХЦХЙХЙХХЙХЙ", message))
+            return await utils.answer(message, self.strings("invalid_args", message))
         raw_bio = msg[0]
         if "{time}" not in raw_bio:
-            return await utils.answer(message, self.strings("БЛЯДЬ", message))
+            return await utils.answer(message, self.strings("missing_time", message))
 
         self.bio_enabled = True
         self.raw_bio = raw_bio
         await self.allmodules.log("start_autobio")
-        await utils.answer(message, self.strings("ЭНЕЙБЛЕД КОГДА ТУПОЙ МОДУЛЬ", message))
+        await utils.answer(message, self.strings("enabled_bio", message))
 
         while self.bio_enabled is True:
             current_time = time.strftime("%H:%M")
@@ -158,7 +158,7 @@ class AutoProfileMod(loader.Module):
         """СТОП, сука, автобио cmd."""
 
         if self.bio_enabled is False:
-            return await utils.answer(message, self.strings("Ты МАКАКА АХАХХАХАХА", message))
+            return await utils.answer(message, self.strings("bio_not_enabled", message))
         else:
             self.bio_enabled = False
             await self.allmodules.log("stop_autobio")
@@ -171,15 +171,15 @@ class AutoProfileMod(loader.Module):
 
         msg = utils.get_args(message)
         if len(msg) != 1:
-            return await utils.answer(message, self.strings("Ты МАКАКА АХАХХАХАХА", message))
+            return await utils.answer(message, self.strings("invalid_args", message))
         raw_name = msg[0]
         if "{time}" not in raw_name:
-            return await utils.answer(message, self.strings("Ты МАКАКА АХАХХАХАХА", message))
+            return await utils.answer(message, self.strings("missing_time", message))
 
         self.name_enabled = True
         self.raw_name = raw_name
         await self.allmodules.log("start_autoname")
-        await utils.answer(message, self.strings("Ты МАКАКА АХАХХАХАХА", message))
+        await utils.answer(message, self.strings("enabled_name", message))
 
         while self.name_enabled is True:
             current_time = time.strftime("%H:%M")
@@ -193,28 +193,28 @@ class AutoProfileMod(loader.Module):
         """ стоп сука автонейм cmd."""
 
         if self.name_enabled is False:
-            return await utils.answer(message, self.strings("Ты МАКАКА АХАХХАХАХА", message))
+            return await utils.answer(message, self.strings("name_not_enabled", message))
         else:
             self.name_enabled = False
             await self.allmodules.log("stop_autoname")
-            await utils.answer(message, self.strings("Ты МАКАКА АХАХХАХАХА", message))
+            await utils.answer(message, self.strings("disabled_name", message))
             await self.client(functions.account.UpdateProfileRequest(
                 first_name=self.raw_name.format(time="")
             ))
 
     async def delpfpcmd(self, message):
-        """ Вырезает вам почку .
-        .delpfp все либо сколько хотите вырезать почек  - хуй пизда ттрололо хуй пизда>"""
+        """ Вырезает вам почку.
+        .delpfp <pfps count/unlimited - remove all>"""
 
         args = utils.get_args(message)
         if not args:
-            return await utils.answer(message, self.strings("Ты МАКАКА АХАХХАХАХА", message))
+            return await utils.answer(message, self.strings("how_many_pfps", message))
         try:
             pfps_count = int(args[0])
         except ValueError:
-            return await utils.answer(message, self.strings("Ты МАКАКА АХАХХАХАХА", message))
+            return await utils.answer(message, self.strings("invalid_pfp_count", message))
         if pfps_count < 0:
-            return await utils.answer(message, self.strings("Ты МАКАКА АХАХХАХАХА", message))
+            return await utils.answer(message, self.strings("invalid_pfp_count", message))
         if pfps_count == 0:
             pfps_count = None
 
@@ -222,5 +222,5 @@ class AutoProfileMod(loader.Module):
         await self.client(functions.photos.DeletePhotosRequest(to_delete))
 
         await self.allmodules.log("delpfp")
-        await utils.answer(message, self.strings("Ты МАКАКА АХАХХАХАХА", message).format(len(to_delete)))
-        return await utils.answer(message, self.strings("Ты МАКАКА АХАХХАХАХА", message))
+        await utils.answer(message, self.strings("removed_pfps", message).format(len(to_delete)))
+        return await utils.answer(message, self.strings("how_many_pfps", message))
