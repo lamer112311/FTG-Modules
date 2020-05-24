@@ -34,7 +34,7 @@ else:
 
 @loader.tds
 class AutoProfileMod(loader.Module):
-    """Automatic stuff for your profile :P"""
+    """Меняет сука вас с текущим времнем залупы телеграм дуров хуй пидор сукаP"""
     strings = {"name": "Automatic Profile",
                "missing_pil": "<b>You don't have Pillow installed</b>",
                "missing_pfp": "<b>You don't have a profile picture to rotate</b>",
@@ -190,7 +190,7 @@ class AutoProfileMod(loader.Module):
             await asyncio.sleep(60)
 
     async def stopautonamecmd(self, message):
-        """ Stop autoname cmd."""
+        """ стоп сука автонейм cmd."""
 
         if self.name_enabled is False:
             return await utils.answer(message, self.strings("name_not_enabled", message))
@@ -203,8 +203,8 @@ class AutoProfileMod(loader.Module):
             ))
 
     async def delpfpcmd(self, message):
-        """ Remove x profile pic(s) from your profile.
-        .delpfp <pfps count/unlimited - remove all>"""
+        """ Вырезает вам почку .
+        .delpfp все либо сколько хотите вырезать почек  - хуй пизда ттрололо хуй пизда>"""
 
         args = utils.get_args(message)
         if not args:
