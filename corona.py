@@ -26,21 +26,21 @@ logger = logging.getLogger(__name__)
 
 
 class CoronaReportsMod(loader.Module):
-    """Gets the latest COVID-19 data found in JHU database for a country"""
+    """Получает последние данные COVID-19, найденные в базе данных JHU для страны"""
     strings = {"name": "Corona"}
     def __init__(self):
-        self.config = loader.ModuleConfig("DEFAULT_COUNTRY", ("spain"),
+        self.config = loader.ModuleConfig("DEFAULT_COUNTRY", ("russia"),
                                           "Enter your default country here")
 
-    async def coronacmd(self, message):
-        """.corona <country (Optional)>"""
+    async def korovacmd(self, message):
+        """.korova страна по инглишу"""
         args = utils.get_args_raw(message)
         if not args:
             country = self.config["DEFAULT_COUNTRY"]
         else:
             country = args
             
-        await message.edit("<code>Visiting  Wuhan...</code>")
+        await message.edit("<code>Ищем зараженных в группе</code>")
 
         url = "https://covid19.mathdro.id/api/countries/" + country
         tries = 0
@@ -69,10 +69,10 @@ class CoronaReportsMod(loader.Module):
             msg = "<s>-------------------------------------</s>\n";
             msg += "👑🦠 in "+ country.capitalize() + "<i> "+lastUpdate+"</i>\n"
             msg += "<s>-------------------------------------</s>\n";
-            msg+= "<b>😷 Confirmed:</b> " + str(confirmed)
-            msg+= "\n<b>🤧 Active:</b> " + str(active) + " (" + str(round(active/confirmed * 100, 2)) + "%)"
-            msg+= "\n<b>🏥 Recovered:</b> " + str(recovered) + " (" + str(round(recovered/confirmed * 100, 2)) + "%)"
-            msg+= "\n<b>💀 Deaths:</b> " + str(deaths) + " (" + str(round(deaths/confirmed * 100, 2)) + "%)"
+            msg+= "<b>😷 Зараженные:</b> " + str(confirmed)
+            msg+= "\n<b>🤧 Активные:</b> " + str(active) + " (" + str(round(active/confirmed * 100, 2)) + "%)"
+            msg+= "\n<b>🏥 Выздоровевшие:</b> " + str(recovered) + " (" + str(round(recovered/confirmed * 100, 2)) + "%)"
+            msg+= "\n<b>💀 Погибшие:</b> " + str(deaths) + " (" + str(round(deaths/confirmed * 100, 2)) + "%)"
 
 
         elif response.status_code == 404:
