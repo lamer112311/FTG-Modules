@@ -46,10 +46,10 @@ class RttsMod(loader.Module):
             reply_message = await event.get_reply_message()
             self_mess = False
             if not reply_message.text:
-                await event.edit('<code>Ты на текст должен ответить, диб*ил</code>')
+                await event.edit('<code>Деменокоп ебет ебет смартфон</code>')
                 return
-        chat = '@aleksobot'
-        await event.edit('<code>Происходит магия Деменкопа</code>')
+        chat = '@Maksobot'
+        await event.edit('<code>Происходит магия пидораса по имени @demenkop</code>')
         async with event.client.conversation(chat) as conv:
             try:
                 response = conv.wait_event(events.NewMessage(incoming=True,
@@ -60,7 +60,7 @@ class RttsMod(loader.Module):
                     await event.client.send_message(chat, user_msg)
                 response = await response
             except YouBlockedUserError:
-                await event.reply('<code>Разблокируй @aleksobot, ибо магия не произойдёт</code>')
+                await event.reply('<code>Разблокируй @Maksobot, ибо магия не произойдёт</code>')
                 return
             if response.text:
                 await event.edit('<code>Бот ответил не медиа форматом, попробуйте снова</code>')
