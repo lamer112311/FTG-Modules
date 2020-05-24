@@ -25,7 +25,7 @@ from .. import loader, utils
 
 @loader.tds
 class TTSMod(loader.Module):
-    strings = {"name": "Text to speech",
+    strings = {"name": "ДЛЯ АНГЛИЧАН",
                "tts_lang_cfg": "Set your language code for the TTS here.",
                "tts_needs_text": "<code>I need some text to convert to speech!</code>"}
 

@@ -43,7 +43,7 @@ class DistortMod(loader.Module):
     """Distort a picture for fun"""
 
     strings = {
-        "name": "Дисторт",
+        "name": "Distortion",
         "no_reply": "<code>You didn\'t reply to a message.</code>",
         "cant_distort": "<b>I can't distort that!</b>",
         "help": "<b>Reply to an image or sticker to distort it!</b>",

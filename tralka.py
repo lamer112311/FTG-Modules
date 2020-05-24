@@ -228,7 +228,7 @@ def register(cb):
 @loader.tds
 class TralkaMod(loader.Module):
     """Generates pastes"""
-    strings = {"name": "Tralka"}
+    strings = {"name": "ТРАЛКА"}
      
     def __init__(self):
         self.config = loader.ModuleConfig()

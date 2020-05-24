@@ -40,7 +40,7 @@ class TagMod(loader.Module):
     Commands :
      
     """
-    strings = {"name": "Tag",
+    strings = {"name": "ТЭГАЕТ",
                "error_chat": "<b>This command can be used in channels and group chats only.</b>",
                "unknow": ("An unknow problem as occured."
                           "\n\nPlease report problem with logs on "

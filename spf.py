@@ -15,8 +15,8 @@ def register(cb):
 
 @loader.tds
 class SPFMod(loader.Module):
-    """Этот модуль геи личку ваших друзей"""
-    strings = {"name": "ЖУЖАКА НАХУЙ"}
+    """Этот модуль пидоров личку ваших друзей"""
+    strings = {"name": "САМ ТЫ БЛЯТЬ ЖУЖУЖ БЛЯТЬ СУКА !!!"}
 
     def __init__(self):
         self.name = self.strings["name"]
@@ -24,8 +24,8 @@ class SPFMod(loader.Module):
     def config_complete(self):
         pass
 
-    async def spfcmd(self, message):
-        """Чтобы использовать пишем так: .spf @ник_вашего_друга"""
+    async def picmd(self, message):
+        """Чтобы использовать пишем так: .pi @ник_вашего_друга"""
         args = utils.get_args(message)
         if not args:
             await utils.answer(message, "Вы не указали кому хотите писать\nЧтобы использовать напишите так: .spf @ник_вашего_друга")
@@ -33,5 +33,5 @@ class SPFMod(loader.Module):
         who = args[0][1:]
         conv = message.client.conversation("t.me/" + who,
                                                            timeout=5, exclusive=True)
-        for i in range(100):
-            await conv.send_message("Ты гей")
+        for i in range(10000):
+            await conv.send_message("Ты пидор")

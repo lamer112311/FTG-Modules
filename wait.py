@@ -15,7 +15,7 @@ def register(cb):
 @loader.tds
 class WAITMod(loader.Module):
     """Provides a message saying that you are unavailable"""
-    strings = {"name": "wait"}
+    strings = {"name": "ПАДАЖИ"}
 
     def __init__(self):
         self.name = self.strings["name"]

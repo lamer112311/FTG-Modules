@@ -14,7 +14,7 @@ def register(cb):
 class RangeMod(loader.Module):
     """Provides numbers as in Python range with delay"""
     strings = {
-        "name": "Range", 
+        "name": "ПИТООООООН!!!!!!", 
         "no_args": "<b>Not enough args (minimum {})</b>",
         "delay_num": "<b>Delay must be a number</b>",
         "args_int": "<b>All range args must be integers</b>",

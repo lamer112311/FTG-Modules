@@ -20,7 +20,7 @@ class MotyaMod(loader.Module):
 Чат и помощь в @motyachat"""
 
     strings = {
-        'name': 'Motya',
+        'name': 'Демотиватор',
         'er_type': ('<code>Тип файла не поддерживается, используйте  '
                     'фото или стикеры</code>'),
         'er_template': ('<code>Произошла ошибка на этапе '

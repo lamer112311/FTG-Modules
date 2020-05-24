@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 @loader.tds
 class IPLookupMod(loader.Module):
     """IP lookup using ip-api.com"""
-    strings = {"name": "IP Lookup"}
+    strings = {"name": "Спалить айпи"}
 
     def __init__(self):
         self.name = self.strings["name"]

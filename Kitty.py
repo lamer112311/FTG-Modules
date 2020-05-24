@@ -12,7 +12,7 @@ def register(cb):
 
 class KittyMod(loader.Module):
     """justsayoriska`s & demenkop kitties module"""
-    strings = {'name': 'Kitty'}
+    strings = {'name': 'Киски'}
 
     def __init__(self):
         self.name = self.strings['name']

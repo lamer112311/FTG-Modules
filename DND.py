@@ -40,7 +40,7 @@ class DoNotDisturbMod(loader.Module):
     Commands :
      
     """
-    strings = {"name": "DND",
+    strings = {"name": "Гавно с афк режимом и прочей хуйней",
                "afk": "<b>I'm AFK right now (since</b> <i>{}</i> <b>ago).</b>",
                "afk_back": "<b>I'm goin' BACK !</b>",
                "afk_gone": "<b>I'm goin' AFK !</b>",

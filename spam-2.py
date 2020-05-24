@@ -78,7 +78,7 @@ async def spammer(e):
 
 
 CMD_HELP.update({
-    "spam":
+    "СРАМ КАКОЙ!!!":
     ".cspam <text>\
 \nUsage: Spam the text letter by letter.\
 \n\n.spam <count> <text>\

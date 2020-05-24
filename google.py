@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 @loader.tds
 class GoogleSearchMod(loader.Module):
     """Make a Google search, right in your chat!"""
-    strings = {"name": "Google Search",
+    strings = {"name": "Гугл поиск",
                "no_term": "<b>I can't Google nothing</b>",
                "no_results": "<b>Could not find anything about</b> <code>{}</code> <b>on Google</b>",
                "results": "<b>These came back from a Google search for</b> <code>{}</code>:\n\n",

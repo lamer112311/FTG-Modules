@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 class GetPPMod(loader.Module):
     """Description for module"""
-    strings = {"name": "Profile Photos"}
+    strings = {"name": "Спам фотками юзера"}
 
     async def client_ready(self, client, db):
         self.client = client

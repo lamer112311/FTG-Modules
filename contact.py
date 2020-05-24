@@ -15,7 +15,7 @@ def register(cb):
 @loader.tds
 class CONTACTMod(loader.Module):
     """Это модуль для игры в \"контакт\""""
-    strings = {"name": "contact"}
+    strings = {"name": "Контакты хуи"}
 
     def __init__(self):
         self.name = self.strings["name"]
