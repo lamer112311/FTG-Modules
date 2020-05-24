@@ -36,24 +36,24 @@ else:
 class AutoProfileMod(loader.Module):
     """Меняет сука вас с текущим времнем залупы телеграм дуров хуй пидор сукаP"""
     strings = {"name": "Automatic Profile",
-               "missing_pil": "<b>You don't have Pillow installed</b>",
-               "missing_pfp": "<b>You don't have a profile picture to rotate</b>",
-               "invalid_args": "<b>Missing parameters, please read the docs</b>",
-               "invalid_degrees": "<b>Invalid number of degrees to rotate, please read the docs</b>",
-               "invalid_delete": "<b>Please specify whether to delete the old pictures or not</b>",
-               "enabled_pfp": "<b>Enabled profile picture rotation</b>",
-               "pfp_not_enabled": "<b>Profile picture rotation is not enabled</b>",
-               "pfp_disabled": "<b>Profile picture rotation disabled</b>",
-               "missing_time": "<b>Time was not specified in bio</b>",
-               "enabled_bio": "<b>Enabled bio clock</b>",
-               "bio_not_enabled": "<b>Bio clock is not enabled</b>",
-               "disabled_bio": "<b>Disabled bio clock</b>",
-               "enabled_name": "<b>Enabled name clock</b>",
-               "name_not_enabled": "<b>Name clock is not enabled</b>",
-               "disabled_name": "<b>Name clock disabled</b>",
-               "how_many_pfps": "<b>Please specify how many profile pictures should be removed</b>",
-               "invalid_pfp_count": "<b>Invalid number of profile pictures to remove</b>",
-               "removed_pfps": "<b>Removed {} profile pic(s)</b>"}
+               "missing_pil": "<b>ЕБАТЬ Я ДАУН</b>",
+               "missing_pfp": "<b>ЕБАЛО НЕ ВЕРТИТСЯ У ДАУНОВ </b>",
+               "invalid_args": "<b>ПАРАМЕТР УКАЖИ ПРАВИЛЬНО ДЕБИЛ</b>",
+               "invalid_degrees": "<b>КАКОЙ ЖЕ  Я ТУПОЙ</b>",
+               "invalid_delete": "<b>Я ДАУН</b>",
+               "enabled_pfp": "<b>У МЕНЯ ЕБАЛО ВЕРТИТСЯ</b>",
+               "pfp_not_enabled": "<b>У МЕНЯ ЕБАЛО ВЕРТИТСЯ</b>",
+               "pfp_disabled": "<b>ЕБАЛО СЛОМАЛОСЬ</b>",
+               "missing_time": "<b>ВРЕМЯ БИТЬ МНЕ ЕБАЛО </b>",
+               "enabled_bio": "<b>МОЙ ТЕЛО СОЗДАНО ТОЛЬКО ДЛЯ РФОКСЕДА</b>",
+               "bio_not_enabled": "<b>МОЕ ТЕЛО ПРЕКРАСНО</b>",
+               "disabled_bio": "<b>ЧАСИКИ ТИКАЮТ РФОСЕКД МОЯ ПИСЯ</b>",
+               "enabled_name": "<b>ВРЕМЯ БИТЬ МНЕ ЕБАЛО</b>",
+               "name_not_enabled": "<b>ВО ИМЯ ГОСПОДА ПОЧЕМУ Я ТАКОЙ ТУПОЙ</b>",
+               "disabled_name": "<b>ДАЙ МОДУЛЬ</b>",
+               "how_many_pfps": "<b>ТЫ ЕБИ ЕБИ СМАРТФОН</b>",
+               "invalid_pfp_count": "<b>ТЫ ЕБИ ЕБИ СМАРТФОН ТЫ ЕБИ ЕБИ СМАРТФОН ТЫ ЕБИ ЕБИ СМАРТФОН ТЫ ЕБИ ЕБИ СМАРТФОН ТЫ ЕБИ ЕБИ СМАРТФОН </b>",
+               "removed_pfps": "<b>ТЫ ЕБИ ЕБИ СМАРТФОН {} ТЫ ЕБИ ЕБИ СМАРТФОН pic(s)</b>"}
 
     def __init__(self):
         self.bio_enabled = False
