@@ -33,7 +33,7 @@ def register(cb):
 @loader.tds
 class DartsMod(loader.Module):
     """Darts"""
-    strings = {"name": "Darts",
+    strings = {"name": "Дартс",
                "darts_emoji_cfg_doc": "The emoji to be sent to Telegram as a dart's. Can currently be either 🎲 or 🎯"}
 
     def __init__(self):

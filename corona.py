@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 class CoronaReportsMod(loader.Module):
     """Получает последние данные COVID-19, найденные в базе данных JHU для страны"""
-    strings = {"name": "Corona"}
+    strings = {"name": "Коровавирус"}
     def __init__(self):
         self.config = loader.ModuleConfig("DEFAULT_COUNTRY", ("russia"),
                                           "Enter your default country here")

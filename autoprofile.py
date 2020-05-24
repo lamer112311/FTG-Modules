@@ -35,7 +35,7 @@ else:
 @loader.tds
 class AutoProfileMod(loader.Module):
     """Меняет сука вас с текущим времнем залупы телеграм дуров хуй пидор сукаP"""
-    strings = {"name": "Automatic Profile",
+    strings = {"name": "Анальная заглушка автопрофиля",
                "missing_pil": "<b>ЕБАТЬ Я ДАУН</b>",
                "missing_pfp": "<b>ЕБАЛО НЕ ВЕРТИТСЯ У ДАУНОВ </b>",
                "invalid_args": "<b>ПАРАМЕТР УКАЖИ ПРАВИЛЬНО ДЕБИЛ</b>",
