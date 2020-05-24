@@ -4,7 +4,7 @@ from uniborg.util import admin_cmd
 from time import sleep
 
 
-@borg.on(admin_cmd("ПЫНГ"))
+@borg.on(admin_cmd("ping"))
 async def _(event):
     if event.fwd_from:
         return
