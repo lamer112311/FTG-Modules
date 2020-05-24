@@ -67,7 +67,7 @@ class CoronaReportsMod(loader.Module):
                 lastUpdate = jsonResponse['lastUpdate']
 
             msg = "<s>-------------------------------------</s>\n";
-            msg += "👑🦠 in "+ country.capitalize() + "<i> "+lastUpdate+"</i>\n"
+            msg += "👑🦠 В анусе "+ country.capitalize() + "<i> "+lastUpdate+"</i>\n"
             msg += "<s>-------------------------------------</s>\n";
             msg+= "<b>😷 Зараженные:</b> " + str(confirmed)
             msg+= "\n<b>🤧 Активные:</b> " + str(active) + " (" + str(round(active/confirmed * 100, 2)) + "%)"
