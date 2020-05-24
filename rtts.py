@@ -25,7 +25,7 @@ class RttsMod(loader.Module):
         self.me = await client.get_me()
 
     async def rcmd(self, event):
-        """.r {текст} или .rtts как ответ на смс;
+        """.r {текст} или .r как ответ на смс;
         .r {текст} как ответ - ответ голосом на смс"""
         user_msg = """{}""".format(utils.get_args_raw(event))
         global reply_and_text
