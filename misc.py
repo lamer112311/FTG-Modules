@@ -101,3 +101,7 @@ class MiscMod(loader.Module):
     async def btcmd(self, message):
         """Blue text must click"""
         await utils.answer(message, self.config["BLUE_TEXT"])
+    
+    @loader.unrestricted
+    async def lolcmd(self, message):
+        """▂▂╱▔▔▔▔▔▔▔▔▔▔▔▔╲╲▂┈╭╮┈┈╭━━╮╭╮┈┈▕┈┈▏┃┃┈┈┃╭╮┃┃┃┈┈▕┈┈▏┃╰━╮┃╰╯┃┃╰━╮▕┈┈▏╰━━╯╰━━╯╰━━╯▕┈┈╲▂▂▂▂▂▂▂▂▂▂▂▂╱""" 
