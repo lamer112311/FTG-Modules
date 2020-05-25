@@ -83,14 +83,7 @@ class MiscMod(loader.Module):
                 await utils.answer(message, "╱▔▔▔▔▔▔▔▔▔▔▔▔╲╲▂┈╭╮┈┈╭━━╮╭╮┈┈▕┈┈▏┃┃┈┈┃╭╮┃┃┃┈┈▕┈┈▏┃╰━╮┃╰╯┃┃╰━╮▕┈┈▏╰━━╯╰━━╯╰━━╯▕┈┈╲▂▂▂▂▂▂▂▂▂▂▂▂╱")
             elif r == 1:
                 await utils.answer(message, "╱▔▔▔▔▔▔▔▔▔▔▔▔╲╲▂┈╭╮┈┈╭━━╮╭╮┈┈▕┈┈▏┃┃┈┈┃╭╮┃┃┃┈┈▕┈┈▏┃╰━╮┃╰╯┃┃╰━╮▕┈┈▏╰━━╯╰━━╯╰━━╯▕┈┈╲▂▂▂▂▂▂▂▂▂▂▂▂╱")
-            else:
-                args = "lol"
-        if args:
-            out = ""
-            for line in self.config["lol_LENGTHS"]:
-                c = max(round(line / len(args)), 1)
-                out += (args * c) + "\n"
-            await utils.answer(message, "<code>" + utils.escape_html(out) + "</code>")
+
 
     @loader.unrestricted
     async def huaweicmd(self, message):
