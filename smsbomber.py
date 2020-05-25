@@ -6,8 +6,8 @@ from .. import loader, utils
 
 
 def refister(cb):
-    cv(Smsbomber())
-
+    cb(Smsbomber())
+ 
 
 class Smsbomber(loader.Module):
     """Вдохновлялся русской смекалкой"""
@@ -21,4 +21,3 @@ class Smsbomber(loader.Module):
     async def client_ready(self, client, db):
         self._db =db
         self._ratelimit = []
-        
