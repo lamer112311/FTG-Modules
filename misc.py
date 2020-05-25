@@ -105,4 +105,4 @@ class MiscMod(loader.Module):
     @loader.unrestricted
     async def lolcmd(self, message):
         """▂▂╱▔▔▔▔▔▔▔▔▔▔▔▔╲╲▂┈╭╮┈┈╭━━╮╭╮┈┈▕┈┈▏┃┃┈┈┃╭╮┃┃┃┈┈▕┈┈▏┃╰━╮┃╰╯┃┃╰━╮▕┈┈▏╰━━╯╰━━╯╰━━╯▕┈┈╲▂▂▂▂▂▂▂▂▂▂▂▂╱""" 
-         await utils.answer(message, self.config
+        await utils.answer(message, self.config["HUAWEI_TEXT"]) 
