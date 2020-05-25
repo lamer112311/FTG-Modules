@@ -92,7 +92,7 @@ class MiscMod(loader.Module):
                 out += (args * c) + "\n"
             await utils.answer(message, "<code>" + utils.escape_html(out) + "</code>")
      
-    @loader.unrestricted
+    @loader.unrestricted 
     async def lolcmd(self, message):
         """Pays respects"""
         args = utils.get_args_raw(message)
