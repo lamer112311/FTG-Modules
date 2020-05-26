@@ -216,7 +216,7 @@
 		"friendly-telegram.modules.notes._cmd_doc_save": "🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈 Сохраняет писульку. Должно быть использовано в ответ с одним членов (название писульки) 🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈",
 		"friendly-telegram.modules.notes._cls_doc": "🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈 Хранит глобальные писульки 🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈",
 		"friendly-telegram.modules.help.name": "🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈 Позвать парня 🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈🏳️‍🌈",
-		"friendly-telegram.modules.help.bad_module": "<b>Указано неверное название члена 🖤</b>",
+		"friendly-telegram.modules.help.bad_module": "<b>Указано неверное название члена 🏳️‍🌈</b>",
 		"friendly-telegram.modules.help.single_mod_header": "<b>Справка к </b> <u>{}</u>:\nОбратите внимание, что монотрахнутый текст - это члены, и их можно запустить с помощью порно<code>{}&lt;command&gt;</code>",
 		"friendly-telegram.modules.uniborg_config._cls_doc": "Хранит конфигурацию для членов Uniborg",
 		"friendly-telegram.modules.uniborg_config.name": "Хранение конфигураций членов Uniborg",
