@@ -92,6 +92,7 @@ class MiscMod(loader.Module):
                 out += (args * c) + "\n"
             await utils.answer(message, "<code>" + utils.escape_html(out) + "</code>")
 
+    
     @loader.unrestricted
     async def fuckcmd(self, message):
         """Fuck"""
