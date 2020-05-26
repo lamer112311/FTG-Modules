@@ -83,14 +83,7 @@ class MiscMod(loader.Module):
                 await utils.answer(message, "┏━━━┓\n┃┏━━┛\n┃┗━━┓\n┃┏━━┛\n┃┃\n┗┛")
             elif r == 1:
                 await utils.answer(message, "╭━━━╮\n┃╭━━╯\n┃╰━━╮\n┃╭━━╯\n┃┃\n╰╯")
-            else:
-                args = "F"
-        if args:
-            out = ""
-            for line in self.config["F_LENGTHS"]:
-                c = max(round(line / len(args)), 1)
-                out += (args * c) + "\n"
-            await utils.answer(message, "<code>" + utils.escape_html(out) + "</code>")
+
 
     @loader.unrestricted
     async def fuckcmd(self, message):
