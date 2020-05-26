@@ -29,6 +29,7 @@ async def d(message):
 	with open(fname, "wb") as file:
 		file.write(await message.client.download_media(data, bytes))
 	image = Image.open(fname)
+	image.save(fname)
 	imgdimens = image.width, image.height
 	distortcmd = f"convert {fname} -liquid-rescale 60x60%! -resize {imgdimens[0]}x{imgdimens[1]}\! {fname}"
 	os.system(distortcmd)
