@@ -73,7 +73,7 @@ class MiscMod(loader.Module):
         await utils.answer(message, self.config["VOLTE_TEXT"])
 
     @loader.unrestricted
-    async def lolcmd(self, message):
+    async def fcmd(self, message):
         """Pays respects"""
         args = utils.get_args_raw(message)
         if not args:
@@ -91,6 +91,26 @@ class MiscMod(loader.Module):
                 c = max(round(line / len(args)), 1)
                 out += (args * c) + "\n"
             await utils.answer(message, "<code>" + utils.escape_html(out) + "</code>")
+
+    @loader.unrestricted
+    async def lovecmd(self, message):
+        """Pays respects"""
+        args = utils.get_args_raw(message)
+        if not args:
+            r = random.randint(0, 3)
+            logger.debug(r)
+            if r == 0:
+                await utils.answer(message, "▀██▀─▄███▄▀██─██▀██▀▀█─██─▐██─██▌██─██─██▄█──██─▐██─██▌▐█▄█▌─██▀█─▄██▄█▀███▀──▀█▀─▄██▄▄█")
+            elif r == 1:
+                await utils.answer(message, "▀██▀─▄███▄▀██─██▀██▀▀█─██─▐██─██▌██─██─██▄█──██─▐██─██▌▐█▄█▌─██▀█─▄██▄█▀███▀──▀█▀─▄██▄▄█")
+            else:
+                args = "F"
+        if args:
+            out = ""
+            for line in self.config["F_LENGTHS"]:
+                c = max(round(line / len(args)), 1)
+                out += (args * c) + "\n"
+            await utils.answer(message, "<code>" + utils.escape_html(out) + "</code>")        
 
     @loader.unrestricted
     async def huaweicmd(self, message):
