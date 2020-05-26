@@ -104,10 +104,10 @@ class MiscMod(loader.Module):
             elif r == 1:
                 await utils.answer(message, "▀██▀─▄███▄▀██─██▀██▀▀█─██─▐██─██▌██─██─██▄█──██─▐██─██▌▐█▄█▌─██▀█─▄██▄█▀███▀──▀█▀─▄██▄▄█")
             else:
-                args = "F"
+                args = "lol"
         if args:
             out = ""
-            for line in self.config["F_LENGTHS"]:
+            for line in self.config["lol_LENGTHS"]:
                 c = max(round(line / len(args)), 1)
                 out += (args * c) + "\n"
             await utils.answer(message, "<code>" + utils.escape_html(out) + "</code>")        
