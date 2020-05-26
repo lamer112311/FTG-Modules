@@ -93,17 +93,15 @@ class MiscMod(loader.Module):
             await utils.answer(message, "<code>" + utils.escape_html(out) + "</code>")
 
     @loader.unrestricted
-    async def lovecmd(self, message):
-        """Love"""
+    async def fuckcmd(self, message):
+        """Fuck"""
         args = utils.get_args_raw(message)
         if not args:
-            r = random.randint(0, 3)
+
             logger.debug(r)
             if r == 0:
-                await utils.answer(message, "▀██▀─▄███▄▀██─██▀██▀▀█─██─▐██─██▌██─██─██▄█──██─▐██─██▌▐█▄█▌─██▀█─▄██▄█▀███▀──▀█▀─▄██▄▄█")
-            elif r == 1:
-                await utils.answer(message, "▀██▀─▄███▄▀██─██▀██▀▀█─██─▐██─██▌██─██─██▄█──██─▐██─██▌▐█▄█▌─██▀█─▄██▄█▀███▀──▀█▀─▄██▄▄█")
-                
+                await utils.answer(message, "┏━┳┳┳━┳┳┓┃━┫┃┃┏┫━┫┃┏┫┃┃┗┫┃┃┗┛┗━┻━┻┻┛")
+                       
 
     @loader.unrestricted
     async def huaweicmd(self, message):
