@@ -102,6 +102,8 @@ class MiscMod(loader.Module):
 
     
     
+    
+    
     @loader.unrestricted
     async def anoncmd(self, message):
         """Anon"""
