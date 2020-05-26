@@ -97,9 +97,6 @@ class MiscMod(loader.Module):
         """Fuck"""
         args = utils.get_args_raw(message)
         if not args:
-
-            logger.debug(r)
-            if r == 0:
                 await utils.answer(message, "┏━┳┳┳━┳┳┓┃━┫┃┃┏┫━┫┃┏┫┃┃┗┫┃┃┗┛┗━┻━┻┻┛")
                        
 
