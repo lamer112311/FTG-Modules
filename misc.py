@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 @loader.tds
 class MiscMod(loader.Module):
-    """Miscellaneous tasks"""
+    """Press F to pay Respect"""
     strings = {"name": "Press F to pay Respect"}
 
     def __init__(self):
