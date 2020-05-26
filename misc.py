@@ -99,7 +99,7 @@ class MiscMod(loader.Module):
         if not args:
               
               
-            await utils.answer(message, "┏┏━┳┳┳━┳┳┓\n┃━┫┃┃┏┫━┫\m┃┏┫┃┃┗┫┃┃\n┗┛┗━┻━┻┻┛")
+            await utils.answer(message, "┏━┳┳┳━┳┳┓\n┃━┫┃┃┏┫━┫\n┃┏┫┃┃┗┫┃┃\n┗┛┗━┻━┻┻┛")
                 
                        
 
