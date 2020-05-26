@@ -91,6 +91,16 @@ class MiscMod(loader.Module):
                 c = max(round(line / len(args)), 1)
                 out += (args * c) + "\n"
             await utils.answer(message, "<code>" + utils.escape_html(out) + "</code>")
+    
+    @loader.unrestricted
+    async def anoncmd(self, message):
+        """Anon"""
+        args = utils.get_args_raw(message)
+        if not args:
+            r = random.randint(0, 3)
+            logger.debug(r)
+            if r == 0:
+                await utils.answer(message, "╭━━╮┏━━╮╭━━╮╭━━╮\n┃╭╮┃┃┏╮┃┃╭╮┃┃┏╮┃\n┃┏┓┃┃┃┃┃┃╰╯┃┃┃┃┃\n┗┛┗┛┗┛┗┛╰━━╯┗┛┗┛")
 
     @loader.unrestricted
     async def fuckcmd(self, message):
@@ -101,16 +111,6 @@ class MiscMod(loader.Module):
             logger.debug(r)
             if r == 0:
                 await utils.answer(message, "┏━┳┳┳━┳┳┓\n┃━┫┃┃┏┫━┫┏┓\n┃┏┫┃┃┗┫┃┃┃┃\n┗┛┗━┻━┻┻┛┃┃\n┏┳┳━┳┳┳┓┏┫┣┳┓\n┃┃┃┃┃┃┃┃┣┻┫┃┃\n┣┓┃┃┃┃┣┫┃┏┻┻┫\n┗━┻━┻━┻┛┗━━━┛")      
-
-    @loader.unrestricted
-    async def anoncmd(self, message):
-        """Anon"""
-        args = utils.get_args_raw(message)
-        if not args:
-            r = random.randint(0, 3)
-            logger.debug(r)
-            if r == 0:
-                await utils.answer(message, "╭━━╮┏━━╮╭━━╮╭━━╮\n┃╭╮┃┃┏╮┃┃╭╮┃┃┏╮┃\n┃┏┓┃┃┃┃┃┃╰╯┃┃┃┃┃\n┗┛┗┛┗┛┗┛╰━━╯┗┛┗┛")               
 
     @loader.unrestricted
     async def kashtomcmd(self, message):
