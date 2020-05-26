@@ -99,18 +99,6 @@ class MiscMod(loader.Module):
         if not args:
             
                 await utils.answer(message, "┏━┳┳┳━┳┳┓\n┃━┫┃┃┏┫━┫┏┓\n┃┏┫┃┃┗┫┃┃┃┃\n┗┛┗━┻━┻┻┛┃┃\n┏┳┳━┳┳┳┓┏┫┣┳┓\n┃┃┃┃┃┃┃┃┣┻┫┃┃\n┣┓┃┃┃┃┣┫┃┏┻┻┫\n┗━┻━┻━┻┛┗━━━┛")
-
-    
-    
-    
-    
-    @loader.unrestricted
-    async def anoncmd(self, message):
-        """Anon"""
-        args = utils.get_args_raw(message)
-        if not args:
-            
-                await utils.answer(message, "╭━━╮┏━━╮╭━━╮╭━━╮\n┃╭╮┃┃┏╮┃┃╭╮┃┃┏╮┃\n┃┏┓┃┃┃┃┃┃╰╯┃┃┃┃┃\n┗┛┗┛┗┛┗┛╰━━╯┗┛┗┛")            
                 
      
 
