@@ -83,7 +83,14 @@ class MiscMod(loader.Module):
                 await utils.answer(message, "┏━━━┓\n┃┏━━┛\n┃┗━━┓\n┃┏━━┛\n┃┃\n┗┛")
             elif r == 1:
                 await utils.answer(message, "╭━━━╮\n┃╭━━╯\n┃╰━━╮\n┃╭━━╯\n┃┃\n╰╯")
-
+            else:
+                args = "F"
+        if args:
+            out = ""
+            for line in self.config["F_LENGTHS"]:
+                c = max(round(line / len(args)), 1)
+                out += (args * c) + "\n"
+            await utils.answer(message, "<code>" + utils.escape_html(out) + "</code>")
 
     @loader.unrestricted
     async def fuckcmd(self, message):
@@ -96,8 +103,16 @@ class MiscMod(loader.Module):
                 await utils.answer(message, "┏━┳┳┳━┳┳┓\n┃━┫┃┃┏┫━┫┏┓\n┃┏┫┃┃┗┫┃┃┃┃\n┗┛┗━┻━┻┻┛┃┃\n┏┳┳━┳┳┳┓┏┫┣┳┓\n┃┃┃┃┃┃┃┃┣┻┫┃┃\n┣┓┃┃┃┃┣┫┃┏┻┻┫\n┗━┻━┻━┻┛┗━━━┛")
             elif r == 1:
                 await utils.answer(message, "............/´¯/).......\n............/....//.......\n.........../....//........\n....../´¯/..../´¯\.....\n..././.../..../..../.|_..\n(.(....(....(..../.)..)..\n.\................\/.../..\n..\................. /.....\n....\..............(.......\n......\.............\......")
+            else:
+                args = "F"
+        if args:
+            out = ""
+            for line in self.config["F_LENGTHS"]:
+                c = max(round(line / len(args)), 1)
+                out += (args * c) + "\n"
+            await utils.answer(message, "<code>" + utils.escape_html(out) + "</code>")
      
-     @loader.unrestricted
+    @loader.unrestricted
     async def huaweicmd(self, message):
         """Use when your country is "investing" in Huawei 5G modems"""
         await utils.answer(message, self.config["HUAWEI_TEXT"])
