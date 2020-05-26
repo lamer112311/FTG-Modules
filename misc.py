@@ -104,10 +104,7 @@ class MiscMod(loader.Module):
             elif r == 1:
                 await utils.answer(message, "............/´¯/).......\n............/....//.......\n.........../....//........\n....../´¯/..../´¯\.....\n..././.../..../..../.|_..\n(.(....(....(..../.)..)..\n.\................\/.../..\n..\................. /.....\n....\..............(.......\n......\.............\......")
      
-
-            
-
-    @loader.unrestricted
+     @loader.unrestricted
     async def huaweicmd(self, message):
         """Use when your country is "investing" in Huawei 5G modems"""
         await utils.answer(message, self.config["HUAWEI_TEXT"])
