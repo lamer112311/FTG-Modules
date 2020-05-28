@@ -110,8 +110,8 @@ class MiscMod(loader.Module):
             r = random.randint(0, 3)
             logger.debug(r)
             if r == 0:
-                await utils.answer(message, "/\  _`\                       /\ \     \n\ \ \L\ \      __    _____    \_\ \___ \n \ \ ,  /    /'__`\ /\ '__`\ /\___  __\\n  \ \ \\ \  /\  __/ \ \ \L\ \\/__/\ \_/\n   \ \_\ \_\\ \____\ \ \ ,__/    \ \_\ \n    \/_/\/ / \/____/  \ \ \/      \/_/ \n                       \ \_\\n                        \/_/        ")                
-
+                await utils.answer(message, "|\n         |\n ________|________\n         |\n         |\n         |")   
+                                                    
     @loader.unrestricted
     async def kashtomcmd(self, message):
         """Прошей свой анал даун"""
