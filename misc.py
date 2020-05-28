@@ -62,9 +62,9 @@ class MiscMod(loader.Module):
                          + "Вот стоит зассаный подъезд. Почему зассан? А потому что пьяное быдло его зассало, а участковый вместо того, чтобы вхуярить ему, этому быдлу, 15 суток и заставить вылизать и научить культуре, если этого не делает дебилоид, школа и семья - делает вид",
                          "", "F_LENGTHS", [5, 1, 1, 4, 1, 1, 1], "что подъезд в идеальной чистоте.", "BLUE_TEXT",
                          "/ХУЙ /ПИЗДА\n/ЯГЕЙЙ /ФИСТИНГ\n/ЯПИДОР /ЯХУЙ /Я /ХОЧУКАКАТЬ /ЯСАРАНЧА /ЯТУБЛИТУРАТОР /ЯАНИМЕ /МОЯВОЙФУ /БЛЯДЬ /РАДУЖНЫЕЦВЕТА",
-                         "Залупа Заулпа !!!🏳️‍🌈!11!!1!1", "TEST", 
+                         "Залупа Заулпа !!!🏳️‍🌈!11!!1!1", "RESPECT", 
                          "──────────────────────────────\n──────█████───█████──█████────\n──────█──███──█──────█───█────\n──────████────████───█████────\n──────████────█──────█────────\n──────█──██───█──────█────────\n──────█───██──█████──█────────", 
-                         "TESTS",
+                         "FUCK",
                          "┏━┳┳┳━┳┳┓\n┃━┫┃┃┏┫━┫┏┓\n┃┏┫┃┃┗┫┃┃┃┃\n┗┛┗━┻━┻┻┛┃┃\n┏┳┳━┳┳┳┓┏┫┣┳┓\n┃┃┃┃┃┃┃┃┣┻┫┃┃\n┣┓┃┃┃┃┣┫┃┏┻┻┫\n┗━┻━┻━┻┛┗━━━┛", )
 
     def config_complete(self):
@@ -98,12 +98,12 @@ class MiscMod(loader.Module):
     @loader.unrestricted
     async def fuckcmd(self, message):
         """Fuck"""
-        await utils.answer(message, self.config["TESTS"]) 
+        await utils.answer(message, self.config["FUCK"]) 
     
     @loader.unrestricted
     async def respectcmd(self, message):
         """Respect"""
-        await utils.answer(message, self.config["TEST"])                                            
+        await utils.answer(message, self.config["RESPECT"])                                            
     @loader.unrestricted
     async def kashtomcmd(self, message):
         """Прошей свой анал даун"""
