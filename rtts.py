@@ -48,7 +48,7 @@ class RttsMod(loader.Module):
             if not reply_message.text:
                 await event.edit('<code>Деменокоп пидор</code>')
                 return
-        chat = '@Maksobot'
+        chat = '@aleksobot'
         await event.edit('<code> Магия питона</code>')
         async with event.client.conversation(chat) as conv:
             try:
