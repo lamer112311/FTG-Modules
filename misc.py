@@ -95,16 +95,12 @@ class MiscMod(loader.Module):
     @loader.unrestricted
     async def fuckcmd(self, message):
         """Fuck"""
-        args = utils.get_args_raw(message)
-        if not args:
-                await utils.answer(message, "┏━┳┳┳━┳┳┓\n┃━┫┃┃┏┫━┫┏┓\n┃┏┫┃┃┗┫┃┃┃┃\n┗┛┗━┻━┻┻┛┃┃\n┏┳┳━┳┳┳┓┏┫┣┳┓\n┃┃┃┃┃┃┃┃┣┻┫┃┃\n┣┓┃┃┃┃┣┫┃┏┻┻┫\n┗━┻━┻━┻┛┗━━━┛")  
+        await utils.answer(message, "┏━┳┳┳━┳┳┓\n┃━┫┃┃┏┫━┫┏┓\n┃┏┫┃┃┗┫┃┃┃┃\n┗┛┗━┻━┻┻┛┃┃\n┏┳┳━┳┳┳┓┏┫┣┳┓\n┃┃┃┃┃┃┃┃┣┻┫┃┃\n┣┓┃┃┃┃┣┫┃┏┻┻┫\n┗━┻━┻━┻┛┗━━━┛")  
 
     @loader.unrestricted
     async def respectcmd(self, message):
         """Respect"""
-        args = utils.get_args_raw(message)
-        if not args:
-                await utils.answer(message, "|\n         |\n ________|________\n         |\n         |\n         |")   
+        await utils.answer(message, "|\n         |\n ________|________\n         |\n         |\n         |")   
                                                     
     @loader.unrestricted
     async def kashtomcmd(self, message):
