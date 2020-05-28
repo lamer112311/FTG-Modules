@@ -100,7 +100,17 @@ class MiscMod(loader.Module):
             r = random.randint(0, 3)
             logger.debug(r)
             if r == 0:
-                await utils.answer(message, "┏━┳┳┳━┳┳┓\n┃━┫┃┃┏┫━┫┏┓\n┃┏┫┃┃┗┫┃┃┃┃\n┗┛┗━┻━┻┻┛┃┃\n┏┳┳━┳┳┳┓┏┫┣┳┓\n┃┃┃┃┃┃┃┃┣┻┫┃┃\n┣┓┃┃┃┃┣┫┃┏┻┻┫\n┗━┻━┻━┻┛┗━━━┛")      
+                await utils.answer(message, "┏━┳┳┳━┳┳┓\n┃━┫┃┃┏┫━┫┏┓\n┃┏┫┃┃┗┫┃┃┃┃\n┗┛┗━┻━┻┻┛┃┃\n┏┳┳━┳┳┳┓┏┫┣┳┓\n┃┃┃┃┃┃┃┃┣┻┫┃┃\n┣┓┃┃┃┃┣┫┃┏┻┻┫\n┗━┻━┻━┻┛┗━━━┛")  
+
+    @loader.unrestricted
+    async def respectcmd(self, message):
+        """Respect"""
+        args = utils.get_args_raw(message)
+        if not args:
+            r = random.randint(0, 3)
+            logger.debug(r)
+            if r == 0:
+                await utils.answer(message, "/\  _`\                       /\ \     \n\ \ \L\ \      __    _____    \_\ \___ \n \ \ ,  /    /'__`\ /\ '__`\ /\___  __\\n  \ \ \\ \  /\  __/ \ \ \L\ \\/__/\ \_/\n   \ \_\ \_\\ \____\ \ \ ,__/    \ \_\ \n    \/_/\/ / \/____/  \ \ \/      \/_/ \n                       \ \_\\n                        \/_/        ")                
 
     @loader.unrestricted
     async def kashtomcmd(self, message):
