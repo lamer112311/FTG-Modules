@@ -60,7 +60,7 @@ class RttsMod(loader.Module):
                     await event.client.send_message(chat, user_msg)
                 response = await response
             except YouBlockedUserError:
-                await event.reply('<code>Разблокируй @Maksobot, ибо магия не произойдёт</code>')
+                await event.reply('<code>Разблокируй @aleksobot, ибо магия не произойдёт</code>')
                 return
             if response.text:
                 await event.edit('<code>Бот ответил не медиа форматом, попробуйте снова</code>')
