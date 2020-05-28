@@ -20,4 +20,15 @@ class Smsbomber(loader.Module):
     
     async def client_ready(self, client, db):
         self._db =db
-        self._ratelimit = []
+        self._client = client
+        self.me =await client.get.me() 
+
+    async def smsbombercmd(self, event):
+        """.smsbomber {Номер}"""
+        user_msg = """{}""".format(utils.get_args_raw(event))
+        global reply_and_text
+        if event.fwd_from:
+            return
+        if not event.reply_to_msg_id:
+        self_mess = True
+        if not user_msg:    
