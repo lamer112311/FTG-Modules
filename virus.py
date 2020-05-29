@@ -5,7 +5,7 @@
 
 from .. import loader, utils
 from ..loader import ModuleConfig as mc
-from telethon import events
+from telethon import events 
 
 import asyncio
 
@@ -27,18 +27,18 @@ class SPFMod(loader.Module):
 
 
     async def viruscmd(self, message):
-     if event.fwd_from:
+     if events.fwd_from:
         return
 
     animation_interval = 12
 
     animation_ttl = range(0, 30)
 
-    input_str = event.pattern_match.group(1)
+    input_str = events.pattern_match.group(1)
 
     if input_str == "virus":
 
-        await event.edit(input_str)
+        await events.edit(input_str)
 
         animation_chars = [
 
