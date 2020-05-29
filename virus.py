@@ -4,6 +4,8 @@ Available Commands:
 
 .virus"""
 
+from .. import loader, utils
+from ..loader import ModuleConfig as mc
 from telethon import events
 
 import asyncio
