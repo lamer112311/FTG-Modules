@@ -26,19 +26,19 @@ class SPFMod(loader.Module):
         pass
 
 
-    async def viruscmd(self, message):
-     if events.fwd_from:
+    async def viruscmd(self, event):
+     if event.fwd_from:
         return
 
     animation_interval = 12
 
     animation_ttl = range(0, 30)
 
-    input_str = events.pattern_match.group(1)
+    input_str = event.pattern_match.group(1)
 
     if input_str == "virus":
 
-        await events.edit(input_str)
+        await event.edit(input_str)
 
         animation_chars = [
 
@@ -107,4 +107,4 @@ class SPFMod(loader.Module):
 
             await asyncio.sleep(animation_interval)
 
-            await events.edit(animation_chars[i % 30])
+            await event.edit(animation_chars[i % 30])
