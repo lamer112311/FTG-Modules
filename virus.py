@@ -14,7 +14,7 @@ import asyncio
 
 
 
-@loader.unrestricted
+
 async def viruscmd(self, message):
 
     if event.fwd_from:
