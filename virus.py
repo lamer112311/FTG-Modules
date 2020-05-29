@@ -1,8 +1,7 @@
-"""Emoji
 
-Available Commands:
 
-.virus"""
+
+
 
 from .. import loader, utils
 from ..loader import ModuleConfig as mc
@@ -11,14 +10,24 @@ from telethon import events
 import asyncio
 
 
+def register(cb):
+    cb(SPFMod())
 
 
+@loader.tds
+class SPFMod(loader.Module):
+    """Этот модуль пидоров личку ваших друзей"""
+    strings = {"name": "САМ ТЫ БЛЯТЬ ЖУЖУЖ БЛЯТЬ СУКА !!!"}
+
+    def __init__(self):
+        self.name = self.strings["name"]
+
+    def config_complete(self):
+        pass
 
 
-async def viruscmd(self, message):
-
-    if event.fwd_from:
-
+    async def viruscmd(self, message):
+     if event.fwd_from:
         return
 
     animation_interval = 12
