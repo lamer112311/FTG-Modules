@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 @loader.tds
 class adsMod(loader.Module):
-    """Автор https://t.me/memeframe"""
+    """Автор странный чел by @laciamemeframe"""
     
     strings = {"name": "Текстовая анимация",
                "no_message": "<b>...🏳️‍🌈Нихуя🏳️‍🌈!</b>",
