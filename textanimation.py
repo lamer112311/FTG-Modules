@@ -27,6 +27,7 @@ logger = logging.getLogger(__name__)
 @loader.tds
 class adsMod(loader.Module):
     """Делает сообщение с анимацией бегущей строки"""
+    """Не подписался без члена остался https://t.me/memeframe"""
     strings = {"name": "Текстовая анимация",
                "no_message": "<b>...🏳️‍🌈Нихуя🏳️‍🌈!</b>",
                "type_char_cfg_doc": "Персонаж для гей оргии🏳️‍🌈",
@@ -34,12 +35,12 @@ class adsMod(loader.Module):
                "delay_text_cfg_doc": "Как долго будет длиться оргазм🏳️‍🌈"}
 
     def __init__(self):
-        self.config = loader.ModuleConfig("DELAY_TYPER", 0.04, lambda m: self.strings("delay_typer_cfg_doc", m),
-                                          "DELAY_TEXT", 0.02, lambda m: self.strings("delay_text_cfg_doc", m))
+        self.config = loader.ModuleConfig("DELAY_TYPER", 0.10, lambda m: self.strings("delay_typer_cfg_doc", m),
+                                          "DELAY_TEXT", 0.5, lambda m: self.strings("delay_text_cfg_doc", m))
 
     @loader.ratelimit
     async def adscmd(self, message):
-        """.ads <message>"""
+        """.ads <сообщение>"""
         a = utils.get_args_raw(message)
         if not a:
             await utils.answer(message, self.strings("no_message", message))
