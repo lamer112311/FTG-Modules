@@ -40,7 +40,7 @@ class adsMod(loader.Module):
 
     @loader.ratelimit
     async def adscmd(self, message):
-        """Делает сообщение с анимацией бегущей строки (🏳️‍🌈Срет в логи🏳️‍🌈) <code>.ads <сообщение></code>"""
+        """Делает сообщение с анимацией бегущей строки (🏳️‍🌈Срет в логи🏳️‍🌈) .ads <сообщение>"""
         a = utils.get_args_raw(message)
         if not a:
             await utils.answer(message, self.strings("no_message", message))
