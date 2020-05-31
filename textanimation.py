@@ -26,8 +26,8 @@ logger = logging.getLogger(__name__)
 
 @loader.tds
 class adsMod(loader.Module):
-    """Делает сообщение с анимацией бегущей строки (🏳️‍🌈Срет в логи🏳️‍🌈)"""
-    "Автор https://t.me/memeframe"
+    """Автор https://t.me/memeframe"""
+    
     strings = {"name": "Текстовая анимация",
                "no_message": "<b>...🏳️‍🌈Нихуя🏳️‍🌈!</b>",
                "type_char_cfg_doc": "Персонаж для гей оргии🏳️‍🌈",
@@ -40,7 +40,7 @@ class adsMod(loader.Module):
 
     @loader.ratelimit
     async def adscmd(self, message):
-        """.ads <сообщение>"""
+        """Делает сообщение с анимацией бегущей строки (🏳️‍🌈Срет в логи🏳️‍🌈) <code>.ads <сообщение></code>"""
         a = utils.get_args_raw(message)
         if not a:
             await utils.answer(message, self.strings("no_message", message))
