@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 
 @loader.tds
-class TickerMod(loader.Module):
+class adsMod(loader.Module):
     """Делает сообщение с анимацией бегущей строки"""
     strings = {"name": "Текстовая анимация",
                "no_message": "<b>...🏳️‍🌈Нихуя🏳️‍🌈!</b>",
@@ -39,7 +39,7 @@ class TickerMod(loader.Module):
 
     @loader.ratelimit
     async def adscmd(self, message):
-        """.ticker <message>"""
+        """.ads <message>"""
         a = utils.get_args_raw(message)
         if not a:
             await utils.answer(message, self.strings("no_message", message))
