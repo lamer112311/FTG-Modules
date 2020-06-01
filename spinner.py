@@ -31,9 +31,9 @@ def register(cb):
 
 @loader.tds
 class SpinnerMod(loader.Module):
-	"""Гавно залупное"""
+	"""🏳️‍🌈Ты гей🏳️‍🌈"""
 	strings = {
-		"name": "Spinner"
+		"name": "🏳️‍🌈Горящее очко вазелина🏳️‍🌈"
 	}
 
 	async def client_ready(self, client, db):
