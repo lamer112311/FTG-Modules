@@ -40,18 +40,18 @@ class SpinnerMod(loader.Module):
 		self.client = client
 	
 	@loader.sudo
-	async def spincmd(self, message):
-		"""you spin me round..."""
+	async def spidcmd(self, message):
+		"""🏳️‍🌈Нет подходящего очка🏳️‍🌈..."""
 		args = utils.get_args(message)
 		
 		if message.is_reply:
 			reply_message = await message.get_reply_message()
 			data = await check_media(reply_message)
 			if isinstance(data, bool):
-				await utils.answer(message, "<code>Реплай на пикчу или стикер блять!</code>")
+				await utils.answer(message, "<code>🏳️‍🌈Ответь на очко🏳️‍🌈</code>")
 				return
 		else:
-			await utils.answer(message, "`Реплай на пикчу или стикер блять`")
+			await utils.answer(message, "`🏳️‍🌈Ответь на очко🏳️‍🌈`")
 			return
 			
 		image = io.BytesIO()
@@ -69,24 +69,24 @@ class SpinnerMod(loader.Module):
 		frames.remove(im)
 
 		image_stream = io.BytesIO()
-		image_stream.name = "spin.gif"
+		image_stream.name = "очко_трахоебля_вагон_навоза.gif"
 		im.save(image_stream, "GIF", save_all=True, append_images=frames, duration = 10)
 		image_stream.seek(0)
 		await utils.answer(message, image_stream)
 
 	@loader.sudo
-	async def epilepsycmd(self, message):
-		"""ПРИВЕТ ЭПИЛЕТИКИ АХАХАХХА"""
+	async def lalcmd(self, message):
+		"""Эпилептикам пизда..."""
 		args = utils.get_args(message)
 		
 		if message.is_reply:
 			reply_message = await message.get_reply_message()
 			data = await check_media(reply_message)
 			if isinstance(data, bool):
-				await utils.answer(message, "<code>Реплай на пикчу или стикер блять!</code>")
+				await utils.answer(message, "<code>🏳️‍🌈Ответь на очко🏳️‍🌈</code>")
 				return
 		else:
-			await utils.answer(message, "`Реплай на пикчу или стикер блять`")
+			await utils.answer(message, "`🏳️‍🌈Ответь на очко🏳️‍🌈`")
 			return
 			
 		image = io.BytesIO()
@@ -95,7 +95,7 @@ class SpinnerMod(loader.Module):
 		invert = ImageOps.invert(image)
 
 		image_stream = io.BytesIO()
-		image_stream.name = "epilepsy.gif"
+		image_stream.name = "улучшенное_фото.gif"
 		image.save(image_stream, "GIF", save_all=True, append_images=[invert], duration = 1)
 		image_stream.seek(0)
 		await utils.answer(message, image_stream)
