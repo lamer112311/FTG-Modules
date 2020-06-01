@@ -41,7 +41,7 @@ class SpinnerMod(loader.Module):
 	
 	@loader.sudo
 	async def spidcmd(self, message):
-		"""🏳️‍🌈Нет подходящего очка🏳️‍🌈..."""
+		"""🏳️‍🌈Пробить очко🏳️‍🌈..."""
 		args = utils.get_args(message)
 		
 		if message.is_reply:
