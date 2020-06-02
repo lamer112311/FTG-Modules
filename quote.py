@@ -30,6 +30,7 @@ from telethon.tl.types import (MessageEntityBold, MessageEntityItalic,
                                MessageEntityBotCommand, MessageEntityUrl,
                                MessageEntityStrike, MessageEntityUnderline)
 
+from simplejson.scanner import JSONDecodeError
 import telethon
 
 logger = logging.getLogger(__name__)
@@ -101,11 +102,11 @@ class rsQuotesMod(loader.Module):
                                           "DEFAULT_SENDTYPE", "sticker",
                                           lambda: self.strings['default_sendtype_cfg_doc'])
 
-        self.name = self.strings["name"]
-
     async def client_ready(self, client, db):
         self.client = client
     
+    @loader.unrestricted
+    @loader.ratelimit
     async def rquotecmd(self, message):
         """Usage: .rquote (template) (optional: file/force_file/sticker)
         Sends as setted config value by default
@@ -114,12 +115,12 @@ class rsQuotesMod(loader.Module):
         reply = await message.get_reply_message()
 
         if not reply:
-            return utils.answer(message, self.strings['no_reply'])
+            return utils.answer(message, self.strings('no_reply', message))
 
         if reply.media:
-            await utils.answer(message, self.strings['processing_onlytext'])
+            await utils.answer(message, self.strings('processing_onlytext', message))
         else:
-            await utils.answer(message, self.strings['processing'])
+            await utils.answer(message, self.strings('processing', message))
 
         sendtype = self.config['DEFAULT_SENDTYPE']
         has_reply = "reply"
@@ -143,12 +144,11 @@ class rsQuotesMod(loader.Module):
         else:
             pass
         
-        username_color = username = admintitle = user_id = None
+        pfp = username_color = username = user_id = hasMedia = None
+        media_image = reply_username = reply_text = admintitle = ""
         profile_photo_url = reply.from_id
-
-        admintitle = ""
-        pfp = None
         no_pfp = True
+
         if isinstance(reply.to_id, telethon.tl.types.PeerChannel) and reply.fwd_from:
             user = reply.forward.chat
         elif isinstance(reply.to_id, telethon.tl.types.PeerChat):
@@ -156,9 +156,9 @@ class rsQuotesMod(loader.Module):
             participants = chat.full_chat.participants.participants
             participant = next(filter(lambda x: x.user_id == reply.from_id, participants), None)
             if isinstance(participant, telethon.tl.types.ChatParticipantCreator):
-                admintitle = self.strings["creator"]
+                admintitle = self.strings("creator", message)
             elif isinstance(participant, telethon.tl.types.ChatParticipantAdmin):
-                admintitle = self.strings["admin"]
+                admintitle = self.strings("admin", message)
             user = await reply.get_sender()
         else:
             user = await reply.get_sender()
@@ -171,7 +171,7 @@ class rsQuotesMod(loader.Module):
         if reply.fwd_from:
             if reply.fwd_from.saved_from_peer:
                 profile_photo_url = reply.forward.chat
-                admintitle = self.strings["channel"]
+                admintitle = self.strings("channel", message)
             elif reply.fwd_from.from_name:
                 username = reply.fwd_from.from_name
                 profile_photo_url = None
@@ -181,7 +181,7 @@ class rsQuotesMod(loader.Module):
                 profile_photo_url = reply.forward.sender.id
                 admintitle = ""
             elif reply.forward.chat:
-                admintitle = self.strings["channel"]
+                admintitle = self.strings("channel", message)
                 profile_photo_url = user
         else:
             if isinstance(reply.to_id, telethon.tl.types.PeerUser) is False:
@@ -189,9 +189,9 @@ class rsQuotesMod(loader.Module):
                     user = await self.client(telethon.tl.functions.channels.GetParticipantRequest(message.chat_id,
                                                                                                   user))
                     if isinstance(user.participant, telethon.tl.types.ChannelParticipantCreator):
-                        admintitle = user.participant.rank or self.strings["creator"]
+                        admintitle = user.participant.rank or self.strings("creator", message)
                     elif isinstance(user.participant, telethon.tl.types.ChannelParticipantAdmin):
-                        admintitle = user.participant.rank or self.strings["admin"]
+                        admintitle = user.participant.rank or self.strings("admin", message)
                     user = user.users[0]
                 except telethon.errors.rpcerrorlist.UserNotParticipantError:
                     pass
@@ -212,8 +212,6 @@ class rsQuotesMod(loader.Module):
         else:
             username_color = self.config['DEFAULT_USERNAME_COLOR']
 
-        reply_username = ""
-        reply_text = ""
         if reply.is_reply is True:
             reply_to = await reply.get_reply_message()
             reply_peer = None
@@ -236,8 +234,6 @@ class rsQuotesMod(loader.Module):
             if reply_username is None or reply_username == "":
                 reply_username = telethon.utils.get_display_name(reply_peer)
             reply_text = reply_to.message
-        media_image = ""
-        hasMedia = False
         if reply.media:
             data = await check_media(reply)
             if not isinstance(data, bool):
@@ -273,29 +269,31 @@ class rsQuotesMod(loader.Module):
                 'mediaImage': media_image.encode('utf-8')
             })
         except requests.ConnectionError:
-            return await message.edit(self.strings['unreachable_error'])
+            return await utils.answer(message, self.strings('unreachable_error', message))
         if requested.status_code == 500:
-            return await message.edit(self.strings['server_error'])
+            return await utils.answer(message, self.strings('server_error', message))
         else:
             requested = requested.json()
         
         try:
-            urlretrieve(requested['success']['file'], self.strings['filename'])
+            urlretrieve(requested['success']['file'], self.strings('filename', message))
             if sendtype.lower() == 'file':
-                with open(self.strings['filename'], 'rb') as file:
+                with open(self.strings('filename', message), 'rb') as file:
                     await utils.answer(message, file)
-                os.remove(self.strings['filename'])
+                os.remove(self.strings('filename', message))
             elif sendtype.lower() == 'force_file':
-                with open(self.strings['filename'], 'rb') as file:
+                with open(self.strings('filename', message), 'rb') as file:
                     await utils.answer(message, file, force_file=True)
-                os.remove(self.strings['filename'])
+                os.remove(self.strings('filename', message))
             else:
-                Image.open(self.strings['filename']).save(self.strings['stickername'], 'webp')
-                with open(self.strings['stickername'], 'rb') as sticker:
+                Image.open(self.strings('filename', message)).save(
+                    self.strings('stickername', message
+                ), 'webp')
+                with open(self.strings('stickername', message), 'rb') as sticker:
                     await utils.answer(message, sticker)
-                os.remove(self.strings['stickername'])
+                os.remove(self.strings('stickername', message))
                 try:
-                    os.remove(self.strings['filename'])
+                    os.remove(self.strings('filename', message))
                 except:
                     pass
         except KeyError:
@@ -306,15 +304,20 @@ class rsQuotesMod(loader.Module):
                     })
                     try:
                         requestedTemplates = templates.json()
-                    except Exception:
-                        return await utils.answer(message, self.strings['invalid_token_error'])
+                    except JSONDecodeError:
+                        return await utils.answer(message, 
+                                                  self.strings('invalid_token_error',
+                                                               message))
                     try:
                         if requestedTemplates['success']:
-                            templateList = self.strings['delimiter'].join(list(requestedTemplates['success']['templates']))
-                            return await utils.answer(message, self.strings['template_notfound_error'].format(style) + '\n'
-                                                    + self.strings['available_templates'].format(templateList))
+                            templateList = self.strings('delimiter', message)\
+                                .join(list(requestedTemplates['success']['templates']))
+                            return await utils.answer(message, self.strings('template_notfound_error', message)\
+                                .format(style) + '\n' + self.strings('available_templates', message)\
+                                    .format(templateList))
                     except KeyError:
-                        return await utils.answer(message, self.strings['template_notfound_error'].format(style))
+                        return await utils.answer(message, self.strings('template_notfound_error', message)\
+                            .format(style))
             elif requested.get('707'):
                 if requested['707'] == 'TEMPLATE_ACCESS_DENIED':
                     templates = requests.get(self.config['API_URL'] + '/quote/getTemplates', params={
@@ -322,23 +325,30 @@ class rsQuotesMod(loader.Module):
                     })
                     try:
                         requestedTemplates = templates.json()
-                    except Exception:
-                        return await utils.answer(message, self.strings['invalid_token_error'])
+                    except JSONDecodeError:
+                        return await utils.answer(message, self.strings('invalid_token_error',
+                                                                        message))
                     try:
                         if requestedTemplates['success']:
-                            templateList = self.strings['delimiter'].join(list(requestedTemplates['success']['templates']))
-                            return await utils.answer(message, self.strings['template_accessdenied_error'].format(style) + '\n'
-                                                    + self.strings['available_templates'].format(templateList))
+                            templateList = self.strings('delimiter', message)\
+                                .join(list(requestedTemplates['success']['templates']))
+                            return await utils.answer(message, self.strings('template_accessdenied_error', message)\
+                                .format(style) + '\n' + self.strings('available_templates', message)\
+                                    .format(templateList))
                     except KeyError:
-                        return await utils.answer(message, self.strings['template_accessdenied_error'].format(style))
+                        return await utils.answer(message, self.strings('template_accessdenied_error', message)\
+                            .format(style))
             elif requested.get('202'):
                 if requested['202'] == 'INVALID TOKEN':
-                    return await utils.answer(message, self.strings['invalid_token_error'])
+                    return await utils.answer(message, self.strings('invalid_token_error',
+                                                                    message))
             elif requested.get('499'):
                 if requested['499'] == "'ERROR_TEXT_MARKDOWN_INVALID'":
-                    return await utils.answer(message, self.strings['markdown_error'])
+                    return await utils.answer(message, self.strings('markdown_error',
+                                                                    message))
             else:
-                err = self.strings['cannot_resolve_error'].format(str(requested))
+                err = self.strings('cannot_resolve_error', message)\
+                    .format(str(requested))
                 return await utils.answer(message, err)
 
 
