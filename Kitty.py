@@ -28,7 +28,7 @@ class KittyMod(loader.Module):
         for j in json:
             kittyurl = j['url']
             rs = requests.get(kittyurl, allow_redirects=True)
-            open('kotik.jpg', 'wb').write(rs.content)
+            open('kotik.png', 'wb').write(rs.content)
             await e.client.send_file(entity=await e.client.get_input_entity(e.chat_id),
-                                     file='kotik.jpg')
+                                     file='kotik.png')
             await e.delete()
