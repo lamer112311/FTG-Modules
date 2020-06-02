@@ -31,7 +31,7 @@ class CodefyMod(loader.Module):
 
     @loader.ratelimit
     async def keyboardcmd(self, message):
-        """.keyboard <text or reply>"""
+        """.keyboard текст"""
         uinp = utils.get_args(message)
         if not uinp:
             get = await message.get_reply_message()
@@ -45,7 +45,7 @@ class CodefyMod(loader.Module):
         text = uinp.lower().strip()
         if len(text) == 0:
             text = '`1234567890-=\][poiuytrewqasdfghjkl;\'\n/.,mnbvcxz '
-        await message.edit(' '.join([f'<code>{typing}</code>' for typing in 'Печатаю...']))
+        await message.edit(' '.join([f'<code>{typing}</code>' for typing in 'Дрочу...']))
         keys = {'`': (38, 16), '~': (38, 16), 'ё': (38, 16), '1': (228, 16), '!': (228, 16), '2': (417, 16),
                 '@': (417, 16), '3': (606, 16), '#': (606, 16), '№': (606, 16), '4': (795, 16), ';': (2094, 404),
                 '$': (795, 16), '5': (984, 16), '%': (984, 16), '6': (1174, 16), '^': (1174, 16), ':': (2094, 404),
@@ -83,7 +83,7 @@ class CodefyMod(loader.Module):
             temp.paste(pressed, (xp, yp))
             frames.append(temp)
         output = BytesIO()
-        output.name = "sub_to_@KeyZenD.gif"
+        output.name = "кончил.gif"
         keyboard.save(output, "GIF", save_all=True, append_images=frames, duration=250, optimize=True)
         output.seek(0)
         await message.delete()
