@@ -60,7 +60,7 @@ class KangMod(loader.Module):
     def __init__(self):
         self.config = loader.ModuleConfig("silent_mode", "off", lambda: self.strings["silent_mode_cfg_doc"],
                                           "pack_name", '%username%\'s 🏳️‍🌈 %packNumber%'
-                                          lambda: self.strings["pack_name_cfg_doc"])
+                                           lambda: self.strings["pack_name_cfg_doc"])
 
     async def client_ready(self, client, db):
         self.client = client
