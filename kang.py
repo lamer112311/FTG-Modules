@@ -37,24 +37,24 @@ def register(cb):
 
 @loader.tds
 class KangMod(loader.Module):
-    """Be cool, be kanger"""
+    """🏳️‍🌈Будь крутым! Имей свой анал со стикерами, блэкджеком и шлюхами🏳️‍🌈"""
     strings = {
-        "name": "Kanger",
-        "silent_mode_cfg_doc": "If turned off, your userbot will edit kang message on ever step(recent actions flood) (on/off)",
-        "pack_name_cfg_doc": "Userbot pack name.\n%username% - your username\n%packNumber% - number of pack.",
-        "preparing_msg": "<code>Preparing for kang...</code>",
-        "unsupported_err": "<b>Unsupported File!</b>",
-        "reply_err": "<b>Reply to photo/sticker/document to kang it bruh</b>",
-        "gettingType_msg": "<code>Getting sticker type...</code>",
-        "image_kanging_msg": "<code>Kanging image sticker...</code>",
-        "animated_kanging_msg": "<code>Kanging animated sticker...</code>",
-        "pack_notExist": "Sticker Pack doesn\'t exist, making new one...",
-        "switching_msg": "<code>Switching to Pack {} due to insufficient space...</code>",
-        "added_to_different_msg": "Sticker added in a Different Pack!" +
-            "This Pack is Newly created! Your pack can be found <a href=\"{}\">here</a> \n " +  # noqa: E131
-            "<b>This message shall be self destructed in 5 seconds.</b>",
-        "added_msg": "Sticker added! Your pack can be found <a href=\"{}\">here</a> \n" +
-            "<b>This message shall be self destructed in 5 seconds.</b>",
+        "name": "🏳️‍🌈Пизделка стикеров🏳️‍🌈",
+        "silent_mode_cfg_doc": "Если этот параметр отключен, ваш пользовательский бот будет редактировать 🏳️‍🌈гейское🏳️‍🌈 сообщение на каждом шаге (недавние изменения) (вкл / выкл)",
+        "pack_name_cfg_doc": "Userbot pack name.\n%username% - your username\n%packNumber% - number of pack🏳️‍🌈.",
+        "preparing_msg": "<code>🏳️‍🌈Готовимся в ебле🏳️‍🌈...</code>",
+        "unsupported_err": "<b>🏳️‍🌈Такой ебли не существует🏳️‍🌈</b>",
+        "reply_err": "<b>🏳️‍🌈Харкни на фото/стикер/документ🏳️‍🌈</b>",
+        "gettingType_msg": "<code>🏳️‍🌈Получение типа стикера🏳️‍🌈...</code>",
+        "image_kanging_msg": "<code>🏳️‍🌈 Наклейка с изображением анала друга🏳️‍🌈...</code>",
+        "animated_kanging_msg": "<code>🏳️‍🌈Забрасываем в живое очко🏳️‍🌈...</code>",
+        "pack_notExist": "🏳️‍🌈Стикер пак doesn\'t exist, делая новый🏳️‍🌈...",
+        "switching_msg": "<code>🏳️‍🌈Переключение на анал {} из-за недостатка места🏳️‍🌈...</code>",
+        "added_to_different_msg": "🏳️‍🌈Стикер добавлен в другой пакет🏳️‍🌈!" +
+            "🏳️‍🌈Этот пакет недавно создан! Ваш пакет может быть найден🏳️‍🌈 <a href=\"{}\">here</a> \n " +  # noqa: E131
+            "<b>🏳️‍🌈Это сообщение должно быть уничтожено за 5 секунд🏳️‍🌈</b>",
+        "added_msg": "🏳️‍🌈Стикер добавлен! Ваш пакет может быть найден🏳️‍🌈 <a href=\"{}\">here</a> \n" +
+            "<b>🏳️‍🌈Это сообщение должно быть уничтожено за 5 секунд🏳️‍🌈.</b>",
     }
 
     def __init__(self):
@@ -67,9 +67,9 @@ class KangMod(loader.Module):
 
     @loader.sudo
     async def kangcmd(self, message):
-        """Kangs a sticker or image to your own pack!
-        Usage: .kang (reply) (optional: emoji)
-        If pack doesn\'t exist it will be created automatically.
+        """🏳️‍🌈Забрасывай в анал свой крючок🏳️‍🌈!
+        использовать: .kang ответить на стикер/документ/фото и можно выбрать эмодзи для стикера
+        🏳️‍🌈Если анал doesn\'t он будет создан автоматически🏳️‍🌈.
         """
         user = await self.client.get_me()
         if not user.username:
@@ -288,7 +288,7 @@ class KangMod(loader.Module):
 
 
 async def resize_photo(photo):
-    """ Resize the given photo to 512x512 """
+    """ 🏳️‍🌈Изменение размера анала на 512x512 🏳️‍🌈 """
     image = Image.open(photo)
     maxsize = (512, 512)
     if (image.width and image.height) < 512:
