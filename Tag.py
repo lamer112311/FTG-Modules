@@ -1,4 +1,4 @@
-# -*- coding: future_fstrings -*-
+# -*- coding: utf-8 -*-
 
 #    Friendly Telegram (telegram userbot)
 #    By Magical Unicorn (based on official Anti PM & AFK Friendly Telegram modules)
