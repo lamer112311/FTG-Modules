@@ -1,12 +1,12 @@
 # (c) @UniBorg
-# Original written by @UniBorg edit by @I_m_Rock
+# Original written by @UniBorg edit by @laciamemeframe
 
 from telethon import events
 import asyncio
 from collections import deque
 
 
-@borg.on(events.NewMessage(pattern=r"\.earth", outgoing=True))
+@borg.on(events.NewMessage(pattern=r"\.test", outgoing=True))
 async def _(event):
 	if event.fwd_from:
 		return
