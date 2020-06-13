@@ -4,9 +4,22 @@
 from telethon import events
 import asyncio
 from collections import deque
+from telethon import events, functions, types
+from .. import loader, utils
 
 
 @borg.on(events.NewMessage(pattern=r"\.test", outgoing=True))
+
+def __init__(self):
+		self.name = self.strings['name']
+		self._me = None
+		self._ratelimit = []
+
+	async def client_ready(self, client, db):
+		self._db = db
+		self._client = client
+		self.me = await client.get_me()
+
 async def _(event):
 	if event.fwd_from:
 		return
