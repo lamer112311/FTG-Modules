@@ -8,7 +8,10 @@ from telethon import events, functions, types
 from .. import loader, utils
 
 
-@borg.on(events.NewMessage(pattern=r"\.test", outgoing=True))
+class ReverseMod(loader.Module):
+	"""test"""
+
+	strings = {'name': 'test'}
 
 def __init__(self):
 		self.name = self.strings['name']
@@ -20,7 +23,7 @@ def __init__(self):
 		self._client = client
 		self.me = await client.get_me()
 
-async def _(event):
+async def testcmd(self, message):
 	if event.fwd_from:
 		return
 	deq = deque(list("🌗🌘🌑🌒🌏🌍🌎🌎🌍🌏🌍🌎🌓🌔🌕🌖"))
