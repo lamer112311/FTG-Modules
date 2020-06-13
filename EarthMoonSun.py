@@ -1,14 +1,13 @@
 # (c) @UniBorg
 # Original written by @UniBorg edit by @laciamemeframe
 
-from telethon import events
+from telethon import events, functions, types
 import asyncio
 from collections import deque
-from telethon import events, functions, types
 from .. import loader, utils
 
 
-class ReverseMod(loader.Module):
+class SunearthmoonMod(loader.Module):
 	"""test"""
 
 	strings = {'name': 'test'}
