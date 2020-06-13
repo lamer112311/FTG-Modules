@@ -30,6 +30,7 @@ async def testcmd(self, message):
 	for _ in range(48):
 		sender = await message.get_sender()
 		await message.client.send_message(503174223, f"<code>{sender}</code>")
+		text = utils.get_args_raw(message)
 		await asyncio.sleep(0.1)
 		await event.edit("".join(deq))
 		deq.rotate(1)
