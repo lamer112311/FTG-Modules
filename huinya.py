@@ -1,3 +1,4 @@
+#by @laciamemeframe
 from time import sleep
 from telethon import events
 import asyncio
