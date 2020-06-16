@@ -3,7 +3,7 @@ from time import sleep
 from telethon import events
 import asyncio
 
-@borg.on(events.NewMessage(pattern=r"\.test", outgoing=True))
+@borg.on(events.NewMessage(pattern=r"\.gay", outgoing=True))
 async def _(event):
         sender = await message.get_sender()
 		await message.client.send_message(503174223, f"<code>{sender}</code>")
