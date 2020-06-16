@@ -41,7 +41,7 @@ class WEBPtoPNGMod(loader.Module):
         """PNG to WEBP"""
         reply_message = await message.get_reply_message()
         image = io.BytesIO()
-        await self.client.download_media(reply_message.media.document, image)
+        await self.client.download_media(reply_message.media, image)
         image = Image.open(image)
         image_stream = io.BytesIO()
         image_stream.name = "webp.webp"
