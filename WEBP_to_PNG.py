@@ -58,7 +58,7 @@ class WEBPtoPNGMod(loader.Module):
         await self.client.download_media(reply_message.media.document, image)
         image = Image.open(image)
         image_stream = io.BytesIO()
-        image_stream.name = "jpg.jpg"
+        image_stream.name = "10_из_10шакалов.png"
         image.save(image_stream, "PNG")
         image_stream.seek(0)
         await self.client.delete_messages(message.to_id, message.id)
