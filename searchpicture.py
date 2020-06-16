@@ -25,9 +25,9 @@ useragent = 'Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) 
 opener.addheaders = [('User-agent', useragent)]
 
 
-@register(outgoing=True, pattern=r"^.reverse(?: |$)(\d*)")
+@register(outgoing=True, pattern=r"^.search(?: |$)(\d*)")
 async def okgoogle(img):
-    """ For .reverse command, Google search images and stickers. """
+    """ For .search command, Google search images and stickers. """
     if os.path.isfile("okgoogle.png"):
         os.remove("okgoogle.png")
 
@@ -145,6 +145,6 @@ async def scam(results, lim):
 
 CMD_HELP.update({
     'reverse':
-    '.reverse\
+    '.search\
         \nUsage: Reply to a pic/sticker to revers-search it on Google Images !!'
 })
