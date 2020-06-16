@@ -55,7 +55,7 @@ class WEBPtoPNGMod(loader.Module):
         """JPG to PNG"""
         reply_message = await message.get_reply_message()
         image = io.BytesIO()
-        await self.client.download_media(reply_message.media.document, image)
+        await self.client.download_media(reply_message.media, image)
         image = Image.open(image).convert("RGB")
         image_stream = io.BytesIO()
         image_stream.name = "10_из_10шакалов.png"
