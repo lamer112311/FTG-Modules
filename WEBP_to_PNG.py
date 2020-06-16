@@ -49,5 +49,19 @@ class WEBPtoPNGMod(loader.Module):
         image_stream.seek(0)
         await self.client.delete_messages(message.to_id, message.id)
         await self.client.send_file(message.to_id, image_stream, force_document = True)
+    
+    @loader.sudo
+    async def jtpcmd(self, message):
+        """WEBP to PNG"""
+        reply_message = await message.get_reply_message()
+        image = io.BytesIO()
+        await self.client.download_media(reply_message.media.document, image)
+        image = Image.open(image)
+        image_stream = io.BytesIO()
+        image_stream.name = "jpg.jpg"
+        image.save(image_stream, "PNG")
+        image_stream.seek(0)
+        await self.client.delete_messages(message.to_id, message.id)
+        await self.client.send_file(message.to_id, image_stream, force_document = True)    
 
     
