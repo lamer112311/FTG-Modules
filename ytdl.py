@@ -30,6 +30,17 @@ from telethon.tl.types import DocumentAttributeAudio
 from uniborg.util import progress, humanbytes, time_formatter
 from youtube_search import YoutubeSearch
 
+logger = logging.getLogger(__name__)
+
+def register(cb):
+    cb(YTsearchod())
+
+@loader.tds
+class YTsearchMod(loader.Module):
+    """download and search video on youtube"""
+    strings = {
+        "name": "YTDownSrch"
+    }
 
 async def client_ready(self, client, db):
 	self.client = client
@@ -52,8 +63,8 @@ async def ytcmd(self,message):
 
 	await message.edit(out)
 
-@register(outgoing=True, pattern=r".rip (audio|video) (.*)")
-async def download_video(v_url):
+@loader.sudo
+async def ripcmd(v_url):
     """ For .rip command, download media from YouTube and many other sites. """
     url = v_url.pattern_match.group(2)
     type = v_url.pattern_match.group(1).lower()
