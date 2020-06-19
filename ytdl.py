@@ -5,8 +5,6 @@
 #
 """ Userbot module containing various scrapers. """
 
-from .. import loader, utils  # pylint: disable=relative-beyond-top-level
-from telethon.tl.types import DocumentAttributeFilename
 import logging
 import os
 import time
