@@ -26,25 +26,6 @@ from userbot import CMD_HELP, BOTLOG, BOTLOG_CHATID, YOUTUBE_API_KEY, CHROME_DRI
 from userbot.events import register
 from telethon.tl.types import DocumentAttributeAudio
 from uniborg.util import progress, humanbytes, time_formatter
-from youtube_search import YoutubeSearch
-
-@register(outgoing=True, pattern="^.yt (.*)")
-async def yt_search(video_q):
-	"""Text or reply"""
-    query = video_q.pattern_match.group(1)
-    result = ''
-	if not text:
-		reply = await video_q.get_reply_message()
-		if not reply:
-			await video_q.delete()
-			return
-		text = reply.raw_text
-	results = YoutubeSearch(text, max_results=10).to_dict()
-	out = f'No search: {text}'
-	for r in results:
-		out += f'\n\n<a href="https://www.youtube.com/{r["link"]}">{r["title"]}</a>'
-
-	await video_q.edit(out)
 
 @register(outgoing=True, pattern=r".rip (audio|video) (.*)")
 async def download_video(v_url):
