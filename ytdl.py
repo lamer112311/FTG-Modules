@@ -31,7 +31,8 @@ from youtube_search import YoutubeSearch
 @register(outgoing=True, pattern="^.yt (.*)")
 async def yt_search(video_q):
 	"""Text or reply"""
-	text = utils.get_args_raw(message)
+    query = video_q.pattern_match.group(1)
+    result = ''
 	if not text:
 		reply = await video_q.get_reply_message()
 		if not reply:
