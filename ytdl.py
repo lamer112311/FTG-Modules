@@ -32,7 +32,7 @@ import logging
 
 
 @register(outgoing=True, pattern="^.yt (текст)")
-async def yt_search(video_q):
+async def yt_search(message):
 		"""текст или реплай"""
 		text = utils.get_args_raw(message)
 		if not text:
