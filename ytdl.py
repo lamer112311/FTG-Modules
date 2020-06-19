@@ -30,8 +30,13 @@ from telethon.tl.types import DocumentAttributeAudio
 from uniborg.util import progress, humanbytes, time_formatter
 from youtube_search import YoutubeSearch
 
-@register(outgoing=True, pattern="^.yt (.*)")
-async def yt_search(message):
+
+async def client_ready(self, client, db):
+	self.client = client
+
+
+	@loader.sudo
+	async def ytcmd(self, message):
 	"""текст или реплай"""
 	text = utils.get_args_raw(message)
 	if not text:
