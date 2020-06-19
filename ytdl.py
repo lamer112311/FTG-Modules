@@ -36,7 +36,7 @@ async def client_ready(self, client, db):
 
 
 @loader.sudo
-async def ytcmd(self,message)
+async def ytcmd(self,message):
 	"""текст или реплай"""
 	text = utils.get_args_raw(message)
 	if not text:
