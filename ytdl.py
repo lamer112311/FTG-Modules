@@ -31,13 +31,13 @@ from uniborg.util import progress, humanbytes, time_formatter
 from youtube_search import YoutubeSearch
 
 @register(outgoing=True, pattern="^.yt (.*)")
-async def ytcmd(self, message):
+async def yt_search(video_q):
 	"""Text or reply"""
-	text = utils.get_args_raw(message)
+	text = utils.get_args_raw(video_q)
 	if not text:
 		reply = await message.get_reply_message()
 		if not reply:
-			await message.delete()
+			await video_q.delete()
 			return
 		text = reply.raw_text
 	results = YoutubeSearch(text, max_results=10).to_dict()
@@ -45,7 +45,7 @@ async def ytcmd(self, message):
 	for r in results:
 		out += f'\n\n<a href="https://www.youtube.com/{r["link"]}">{r["title"]}</a>'
 
-	await message.edit(out)
+	await video_q.edit(out)
 
 @register(outgoing=True, pattern=r".rip (audio|video) (.*)")
 async def download_video(v_url):
