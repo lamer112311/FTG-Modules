@@ -30,8 +30,7 @@ from .. import loader, utils  # pylint: disable=relative-beyond-top-level
 from telethon.tl.types import DocumentAttributeFilename
 import logging
 
-
-@register(outgoing=True, pattern="^.yt (текст)")
+@register(outgoing=True, pattern="^.yt (.*)")
 async def yt_search(message):
 		"""текст или реплай"""
 		text = utils.get_args_raw(message)
