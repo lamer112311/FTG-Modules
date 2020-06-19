@@ -5,9 +5,6 @@
 #
 """ Userbot module containing various scrapers. """
 
-from .. import loader, utils  # pylint: disable=relative-beyond-top-level
-from telethon.tl.types import DocumentAttributeFilename
-import logging
 import os
 import time
 import asyncio
@@ -28,44 +25,76 @@ from userbot import CMD_HELP, BOTLOG, BOTLOG_CHATID, YOUTUBE_API_KEY, CHROME_DRI
 from userbot.events import register
 from telethon.tl.types import DocumentAttributeAudio
 from uniborg.util import progress, humanbytes, time_formatter
-from youtube_search import YoutubeSearch
-
-logger = logging.getLogger(__name__)
-
-def register(cb):
-	cb(YTsearchod())
 
 
-@loader.tds
-class YTsearchMod(loader.Module):
-	"""Поиск видео на ютубе"""
-	strings = {
-		"name": "YTDownSrch"
-	}
+@register(outgoing=True, pattern="^.yt (.*)")
+async def yt_search(video_q):
+    """ For .yt command, do a YouTube search from Telegram. """
+    query = video_q.pattern_match.group(1)
+    result = ''
 
-async def client_ready(self, client, db):
-		self.client = client    
+    if not YOUTUBE_API_KEY:
+        await video_q.edit(
+            "`Error: YouTube API key missing! Add it to environment vars or config.env.`"
+        )
+        return
 
-@loader.sudo
-async def ytcmd(self, message):
-	"""Text or reply"""
-	text = utils.get_args_raw(message)
-	if not text:
-		reply = await message.get_reply_message()
-		if not reply:
-			await message.delete()
-			return
-		text = reply.raw_text
-	results = YoutubeSearch(text, max_results=10).to_dict()
-	out = f'No search: {text}'
-	for r in results:
-		out += f'\n\n<a href="https://www.youtube.com/{r["link"]}">{r["title"]}</a>'
+    await video_q.edit("```Processing...```")
 
-	await message.edit(out)
+    full_response = await youtube_search(query)
+    videos_json = full_response[1]
 
-@loader.sudo
-async def ripcmd(self, v_url):
+    for video in videos_json:
+        title = f"{unescape(video['snippet']['title'])}"
+        link = f"https://youtu.be/{video['id']['videoId']}"
+        result += f"{title}\n{link}\n\n"
+
+    reply_text = f"**Search Query:**\n`{query}`\n\n**Results:**\n\n{result}"
+
+    await video_q.edit(reply_text)
+
+
+async def youtube_search(query,
+                         order="relevance",
+                         token=None,
+                         location=None,
+                         location_radius=None):
+    """ Do a YouTube search. """
+    youtube = build('youtube',
+                    'v3',
+                    developerKey=YOUTUBE_API_KEY,
+                    cache_discovery=False)
+    search_response = youtube.search().list(
+        q=query,
+        type="video",
+        pageToken=token,
+        order=order,
+        part="id,snippet",
+        maxResults=10,
+        location=location,
+        locationRadius=location_radius).execute()
+
+    videos = []
+
+    for search_result in search_response.get("items", []):
+        if search_result["id"]["kind"] == "youtube#video":
+            videos.append(search_result)
+    try:
+        nexttok = search_response["nextPageToken"]
+        return (nexttok, videos)
+    except HttpError:
+        nexttok = "last_page"
+        return (nexttok, videos)
+    except KeyError:
+        nexttok = "KeyError, try again."
+        return (nexttok, videos)
+
+
+@register(outgoing=True, pattern=r".rip (audio|video) (.*)")
+async def download_video(v_url):
     """ For .rip command, download media from YouTube and many other sites. """
+    url = v_url.pattern_match.group(2)
+    type = v_url.pattern_match.group(1).lower()
 
     await v_url.edit("`Preparing to download...`")
 
@@ -196,3 +225,17 @@ async def ripcmd(self, v_url):
                          f"{rip_data['title']}.mp4")))
         os.remove(f"{rip_data['id']}.mp4")
         await v_url.delete()
+
+
+
+
+
+
+CMD_HELP.update({'yt': '.yt <text>\
+        \nUsage: Does a YouTube search.'})
+
+CMD_HELP.update({
+    'rip':
+    '.ripaudio <url> or ripvideo <url>\
+        \nUsage: Download videos and songs from YouTube (and [many other sites](https://ytdl-org.github.io/youtube-dl/supportedsites.html)).'
+})
