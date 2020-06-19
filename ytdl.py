@@ -30,41 +30,25 @@ from telethon.tl.types import DocumentAttributeAudio
 from uniborg.util import progress, humanbytes, time_formatter
 from youtube_search import YoutubeSearch
 
-logger = logging.getLogger(__name__)
-
-def register(cb):
-    cb(YTsearchod())
-
-@loader.tds
-class YTsearchMod(loader.Module):
-    """download and search video on youtube"""
-    strings = {
-        "name": "YTDownSrch"
-    }
-
-async def client_ready(self, client, db):
-	self.client = client
-
-
-@loader.sudo
-async def ytcmd(self,message):
-	"""текст или реплай"""
-	text = utils.get_args_raw(message)
+@register(outgoing=True, pattern="^.yt (.*)")
+async def yt_search(video_q):
+	"""Text or reply"""
+	text = utils.get_args_raw(video_q)
 	if not text:
-		reply = await message.get_reply_message()
+		reply = await video_q.get_reply_video_q()
 		if not reply:
-			await message.delete()
+			await video_q.delete()
 			return
 		text = reply.raw_text
 	results = YoutubeSearch(text, max_results=10).to_dict()
-	out = f'Не найдено видео по этому запросу: {text}'
+	out = f'No search: {text}'
 	for r in results:
 		out += f'\n\n<a href="https://www.youtube.com/{r["link"]}">{r["title"]}</a>'
 
-	await message.edit(out)
+	await video_q.edit(out)
 
-@loader.sudo
-async def ripcmd(v_url):
+@register(outgoing=True, pattern=r".rip (audio|video) (.*)")
+async def download_video(v_url):
     """ For .rip command, download media from YouTube and many other sites. """
     url = v_url.pattern_match.group(2)
     type = v_url.pattern_match.group(1).lower()
