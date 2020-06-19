@@ -5,6 +5,9 @@
 #
 """ Userbot module containing various scrapers. """
 
+from .. import loader, utils  # pylint: disable=relative-beyond-top-level
+from telethon.tl.types import DocumentAttributeFilename
+import logging
 import os
 import time
 import asyncio
@@ -26,26 +29,23 @@ from userbot.events import register
 from telethon.tl.types import DocumentAttributeAudio
 from uniborg.util import progress, humanbytes, time_formatter
 from youtube_search import YoutubeSearch
-from .. import loader, utils  # pylint: disable=relative-beyond-top-level
-from telethon.tl.types import DocumentAttributeFilename
-import logging
 
 @register(outgoing=True, pattern="^.yt (.*)")
 async def yt_search(message):
-		"""текст или реплай"""
-		text = utils.get_args_raw(message)
-		if not text:
-			reply = await message.get_reply_message()
-			if not reply:
-				await message.delete()
-				return
-			text = reply.raw_text
-		results = YoutubeSearch(text, max_results=10).to_dict()
-		out = f'Не найдено видео по этому запросу: {text}'
-		for r in results:
-			out += f'\n\n<a href="https://www.youtube.com/{r["link"]}">{r["title"]}</a>'
+	"""текст или реплай"""
+	text = utils.get_args_raw(message)
+	if not text:
+		reply = await message.get_reply_message()
+		if not reply:
+			await message.delete()
+			return
+		text = reply.raw_text
+	results = YoutubeSearch(text, max_results=10).to_dict()
+	out = f'Не найдено видео по этому запросу: {text}'
+	for r in results:
+		out += f'\n\n<a href="https://www.youtube.com/{r["link"]}">{r["title"]}</a>'
 
-		await message.edit(out)
+	await message.edit(out)
 
 @register(outgoing=True, pattern=r".rip (audio|video) (.*)")
 async def download_video(v_url):
