@@ -31,7 +31,7 @@ from uniborg.util import progress, humanbytes, time_formatter
 from youtube_search import YoutubeSearch
 
 @register(outgoing=True, pattern="^.yt (.*)")
-async def yt_search(self, message):
+async def ytcmd(self, message):
 	"""Text or reply"""
 	text = utils.get_args_raw(message)
 	if not text:
