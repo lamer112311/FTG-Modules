@@ -26,11 +26,14 @@ from userbot.events import register
 from telethon.tl.types import DocumentAttributeAudio
 from uniborg.util import progress, humanbytes, time_formatter
 from youtube_search import YoutubeSearch
+from .. import loader, utils  # pylint: disable=relative-beyond-top-level
+from telethon.tl.types import DocumentAttributeFilename
+import logging
 
 
 @register(outgoing=True, pattern="^.yt (текст)")
 async def yt_search(video_q):
-        """текст или реплай"""
+		"""текст или реплай"""
 		text = utils.get_args_raw(message)
 		if not text:
 			reply = await message.get_reply_message()
