@@ -9,7 +9,7 @@ from .. import loader, utils
 def register(cb):
     cb(TextMod())
 class TextMod(loader.Module):
-	"""Перевод голосовые сообщения в текст с помощью бота @voice_2_text_bot"""
+	"""Перевод голосовых сообщений в текст с помощью бота @voice_2_text_bot"""
 	strings = {'name': 'voicetotext'}
 	def __init__(self):
 		self.name = self.strings['name']
