@@ -7,7 +7,7 @@ from .. import loader, utils
 def register(cb):
     cb(TextMod())
 class TextMod(loader.Module):
-	"""Перевод голосовых сообщений в текст с помощью бота @voicybot"""
+	"""Перевод голосовых сообщений в текст с помощью бота @voice_2_text_bot"""
 	strings = {'name': 'voicetotext'}
 	def __init__(self):
 		self.name = self.strings['name']
@@ -30,14 +30,15 @@ class TextMod(loader.Module):
 		except:
 			await message.edit("Поддерживает только голосовые сообщения!!!")
 			return
-		chat = '@voicybot'
-		await message.edit('@voicybot <code>обработка...</code>')
+		chat = '@voice_2_text_bot'
+		await message.edit('@voice_2_text_bot <code>обработка...</code>')
 		async with message.client.conversation(chat) as conv:
 			try:
-				response = conv.wait_event(events.NewMessage(incoming=True, from_users=259276793))
+				response = conv.wait_event(events.NewMessage(incoming=True, from_users=833525928))
 				await message.client.send_file(chat, voice)
 				response = await response
 			except YouBlockedUserError:
-				await message.reply('<code>Разблокируй бота</code> @voicybot')
+				await message.reply('<code>Разблокируй бота</code> @voice_2_text_bot')
 				return
-			await message.client.edit_message(message.to_id, response.text)
+			await message.delete()
+			await message.client.send_message(message.to_id, response.text)
