@@ -1,7 +1,5 @@
 # by @laciamemeframe
 
-# by @laciamemeframe
-
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from .. import loader, utils
