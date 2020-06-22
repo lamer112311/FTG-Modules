@@ -42,3 +42,5 @@ class TextMod(loader.Module):
 				return
 			await message.delete()
 			await message.client.send_message(message.to_id, response.text)
+			await message.delete()
+			await message.client.send_message(message.to_id, response.text)
