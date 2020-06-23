@@ -1,7 +1,6 @@
 #by @laciamemeframe
 from telethon import events
 import asyncio
-from time import sleep
 
 
 @borg.on(events.NewMessage(pattern=r"\.empty", outgoing=True))
