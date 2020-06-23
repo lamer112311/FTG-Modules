@@ -7,4 +7,4 @@ import asyncio
 @borg.on(events.NewMessage(pattern=r"\.empty", outgoing=True))
 async def _(event):
     await event.edit("Тут хуй")
-    await event.respond("&NoBreak;\n")
+    await event.respond("&NoBreak;\n"*100)
