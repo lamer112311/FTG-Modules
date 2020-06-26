@@ -11,9 +11,9 @@ def register(cb):
 
 @loader.tds
 class WWWTrMod(loader.Module):
-    """wttr.in"""
+    """Погода by wttr.in"""
 
-    strings = {"name": "wttr"}
+    strings = {"name": "Погода"}
 
     async def client_ready(self, client, db):
         self.client = client
