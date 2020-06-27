@@ -12,7 +12,7 @@ def register(cb):
 class RttsMod(loader.Module):
     """you - гениально простое решение для you на русском языке"""
 
-    strings = {'name': 'SaveYoutubeBot'}
+    strings = {'name': 'Ютьюб'}
 
     def __init__(self):
         self.name = self.strings['name']
