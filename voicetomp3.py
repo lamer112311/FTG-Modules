@@ -43,3 +43,53 @@ class Mp3Mod(loader.Module):
 				return
 			await message.delete()
 			await message.client.send_file(message.to_id, response.media)
+	
+	async def infomp3cmd(self, message):
+		""".infomp3 ответить на файл mp3"""
+		reply = await message.get_reply_message()
+		if not reply:
+			await message.edit("Ответь на файл mp3")
+			return
+		try:
+			media = reply.media
+		except:
+			await message.edit("Показывает информацию только mp3 файлов")
+			return
+		chat = '@mp3toolsbot'
+		await message.edit('@mp3toolsbot <code>обработка...</code>')
+		async with message.client.conversation(chat) as conv:
+			try:
+				response = conv.wait_event(events.NewMessage(incoming=True, from_users=257113201))
+				blank = conv.wait_event(events.NewMessage(incoming=True, from_users=257113201))
+				await message.client.send_file(chat, media)
+				blank = await blank
+				response = await response
+			except YouBlockedUserError:
+				await message.reply('<code>Разблокируй бота</code> @mp3toolsbot')
+				return
+			await message.delete()
+			await message.client.send_message(message.to_id, response.text)	
+
+	async def mp3voicecmd(self, message):
+		""".mp3voice ответить на файл mp3"""
+		reply = await message.get_reply_message()
+		if not reply:
+			await message.edit("Ответь на файл mp3")
+			return
+		try:
+			media = reply.media
+		except:
+			await message.edit("Конвертирует mp3 в голосовое сообщение")
+			return
+		chat = '@convertkonbot'
+		await message.edit('@convertkonbot <code>обработка...</code>')
+		async with message.client.conversation(chat) as conv:
+			try:
+				response = conv.wait_event(events.NewMessage(incoming=True, from_users=503828089))
+				await message.client.send_file(chat, media)
+				response = await response
+			except YouBlockedUserError:
+				await message.reply('<code>Разблокируй бота</code> @convertkonbot')
+				return
+			await message.delete()
+			await message.client.send_file(message.to_id, response.voice)			
