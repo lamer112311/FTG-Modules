@@ -20,7 +20,7 @@ class Mp3Mod(loader.Module):
 		self._client = client
 		self.me = await client.get_me()
 	async def mp3cmd(self, message):
-		""".mp3 <Ответить на голосовое сообщение>"""
+		""".mp3 Ответить на голосовое сообщение"""
 		reply = await message.get_reply_message()
 		if not reply:
 			await message.edit("Ответь на голосовое сообщение")
