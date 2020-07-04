@@ -39,5 +39,4 @@ class TextMod(loader.Module):
 			except YouBlockedUserError:
 				await message.reply('<code>Разблокируй бота</code> @voicybot')
 				return
-			await message.delete()
-			await message.client.send_message(message.to_id, response.text)
+			await message.edit(f'{response.message.message}')
