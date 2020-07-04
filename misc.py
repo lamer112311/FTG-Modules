@@ -77,7 +77,7 @@ class MiscMod(loader.Module):
         self.name = self.strings["name"]
 
     @loader.unrestricted
-    async def twrpcmd(self, message):
+    async def twrpscmd(self, message):
         """Отлетел вайфай и блютуз и все пизда Рулю"""
         await utils.answer(message, self.config["VOLTE_TEXT"])
 
