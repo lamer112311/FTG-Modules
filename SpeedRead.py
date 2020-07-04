@@ -32,7 +32,7 @@ def register(cb):
 
 @loader.tds
 class SpeedReadMod(loader.Module):
-	"""каждое слово раз в 100мс"""
+	"""каждое слово раз в 450мс"""
 	strings = {
 		"name": "SpeedRead"
 	}
