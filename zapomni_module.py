@@ -27,7 +27,7 @@ class ZapomniMod(loader.Module):
 	async def zcmd(self, message):
 		""".z <reply to user/text>"""
 		
-		ufr = requests.get("https://github.com/Daniel3k00/zapomni-ftg/raw/master/zfont.ttf")
+		ufr = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/raw/master/zfont.ttf")
 		f = ufr.content
 		
 		reply = await message.get_reply_message()
