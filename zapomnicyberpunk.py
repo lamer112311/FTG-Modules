@@ -51,7 +51,7 @@ class ZapomnicyberpunkMod(loader.Module):
 		W, H = img.size
 		txt = txt.replace("\n", "𓃐")
 		text = "\n".join(wrap(txt, 40))
-		t = "Remember the bastards:\n" +text
+		t = "Remember the bastards\n" +text
 		t = t.replace("𓃐","\n")
 		draw = ImageDraw.Draw(img)
 		font = ImageFont.truetype(io.BytesIO(f), 32, encoding='UTF-8')
