@@ -27,7 +27,7 @@ class ZapomnicyberpunkMod(loader.Module):
 	async def xcmd(self, message):
 		""".x <reply to user/text>"""
 		
-		ufr = requests.get("https://github.com/Fl1yd/FTG-modules/raw/master/futura-pt-book.ttf")
+		ufr = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/raw/master/12061.ttf")
 		f = ufr.content
 		
 		reply = await message.get_reply_message()
