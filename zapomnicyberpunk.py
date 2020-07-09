@@ -42,7 +42,7 @@ class ZapomnicyberpunkMod(loader.Module):
 
 
 		await message.edit("<b>Извиняюсь...</b>")
-		pic = requests.get("https://raw.githubusercontent.com/LaciaMemeFrame/FTG-Modules/master/5a06f172486c5b4008c75774717a6c95.jpg")
+		pic = requests.get("https://raw.githubusercontent.com/LaciaMemeFrame/FTG-Modules/master/01.jpg")
 		pic.raw.decode_content = True
 		img = Image.open(io.BytesIO(pic.content)).convert("RGB")
 		black = Image.new("RGBA", img.size, (0, 0, 0, 100))
