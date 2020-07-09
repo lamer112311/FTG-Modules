@@ -24,8 +24,8 @@ class ZapomnicyberpunkMod(loader.Module):
 		self._client = client
 		self.me = await client.get_me()
 		
-	async def xcmd(self, message):
-		""".x <reply to user/text>"""
+	async def ccmd(self, message):
+		""".c <reply to user/text>"""
 		
 		ufr = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/raw/master/12061.ttf")
 		f = ufr.content
@@ -51,7 +51,7 @@ class ZapomnicyberpunkMod(loader.Module):
 		W, H = img.size
 		txt = txt.replace("\n", "𓃐")
 		text = "\n".join(wrap(txt, 40))
-		t = "Запомните твари:\n" +text
+		t = "Remember the bastards:\n" +text
 		t = t.replace("𓃐","\n")
 		draw = ImageDraw.Draw(img)
 		font = ImageFont.truetype(io.BytesIO(f), 32, encoding='UTF-8')
