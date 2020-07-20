@@ -1,4 +1,4 @@
-# Russian tts for Friendly-telegram: .rtts
+# Ukranian tts for Friendly-telegram: .uk
 
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
