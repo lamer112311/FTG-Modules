@@ -200,7 +200,7 @@ async def pilrotate(event):
 	image_stream.seek(0)
 	await event.client.send_file(event.chat_id, image_stream, force_document = True)
 
-	@borg.on(admin_cmd(pattern=".resizepic ?(.*)", allow_sudo=True)) 
+@borg.on(admin_cmd(pattern=".resizepic ?(.*)", allow_sudo=True)) 
 async def pilrotate(event):
 	if event.is_reply:
 		reply_message = await event.get_reply_message()
