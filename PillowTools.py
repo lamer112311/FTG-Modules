@@ -198,7 +198,7 @@ async def pilrotate(event):
 	image_stream.name = "pilresize.png"
 	image.save(image_stream, "PNG")
 	image_stream.seek(0)
-	await event.client.send_file(event.chat_id, image_stream)
+	await event.client.send_file(event.chat_id, image_stream, force_document = True)
 	
 	
 	
