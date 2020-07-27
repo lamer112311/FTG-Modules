@@ -131,7 +131,7 @@ async def pilops(event):
 	
 
 	
-@borg.on(admin_cmd(pattern=".resize ?(.*)", allow_sudo=True)) 
+@borg.on(admin_cmd(pattern=".resizedoc ?(.*)", allow_sudo=True)) 
 async def pilrotate(event):
 	if event.is_reply:
 		reply_message = await event.get_reply_message()
@@ -199,6 +199,75 @@ async def pilrotate(event):
 	image.save(image_stream, "PNG")
 	image_stream.seek(0)
 	await event.client.send_file(event.chat_id, image_stream, force_document = True)
+
+	@borg.on(admin_cmd(pattern=".resizepic ?(.*)", allow_sudo=True)) 
+async def pilrotate(event):
+	if event.is_reply:
+		reply_message = await event.get_reply_message()
+		data = await check_media(reply_message)
+
+		if isinstance(data, bool):
+			await event.edit("`I can't resize that!".upper())
+			return
+	else:
+		await event.edit("Reply to an image or sticker to resize it!".upper())
+		return
+	uinp = event.pattern_match.group(1)
+
+	if not uinp:
+		await event.edit("What's about input".upper())
+		return
+	uinp = uinp.split()
+	image = io.BytesIO()
+	await event.client.download_media(data, image)
+	image = Image.open(image)
+	x, y = image.size
+	rx, ry = None, None
+	if len(uinp) == 1:
+		try:
+			rx, ry = int(uinp[0]), int(uinp[0])
+		except ValueError:
+			if uinp[0] == "x":
+				rx, ry = x, x
+			if uinp[0] == "y":
+				rx, ry = y, y
+			else:
+				await event.edit("INPUT MUST BE STING")
+				return
+	else:
+		if uinp[0] == "x":
+			rx = x
+		if uinp[0] == "y":
+			rx = y
+		if uinp[1] == "x":
+			ry = x
+		if uinp[1] == "y":
+			ry = y
+		if not rx:
+			try:
+				rx = int(uinp[0])
+			except:
+				await event.edit("ERROR IN INPUT")
+				return
+		if not ry:
+			try:
+				ry = int(uinp[1])
+			except:
+				await event.edit("ERROR IN INPUT")
+				return
+		
+	
+	try:
+		image = image.resize((rx, ry))
+	except Exception as e:
+		await event.edit("ERROR IN RESIZE\n"+str(e))
+		return
+	await event.delete()
+	image_stream = io.BytesIO()
+	image_stream.name = "pilresize.png"
+	image.save(image_stream, "PNG")
+	image_stream.seek(0)
+	await event.client.send_file(event.chat_id, image_stream)
 	
 	
 	
