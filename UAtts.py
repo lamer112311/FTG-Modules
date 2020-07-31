@@ -44,7 +44,7 @@ class uttsMod(loader.Module):
             reply_message = await event.get_reply_message()
             self_mess = False
             if not reply_message.text:
-                await event.edit('<code>Группа поддержки @memeframe</code>')
+                await event.edit('<code>Группа поддержки @floodmemeframe</code>')
                 return
         chat = '@playcraftbot'
         await event.edit('<code> Обработка...</code>')
