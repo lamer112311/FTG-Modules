@@ -53,9 +53,9 @@ class uttsMod(loader.Module):
                 response = conv.wait_event(events.NewMessage(incoming=True,
                                                              from_users=380570427))
                 if not self_mess:
-                    await event.client.forward_messages(chat, '/tell' +reply_message)
+                    await event.client.forward_messages(chat, '/tell'  +reply_message)
                 else:
-                    await event.client.send_message(chat, '/tell' +user_msg)
+                    await event.client.send_message(chat, '/tell'  +user_msg)
                 response = await response
             except YouBlockedUserError:
                 await event.reply('<code>Разблокируй @playcraftbot</code>')
