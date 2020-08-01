@@ -40,7 +40,7 @@ class nudes2dMod(loader.Module):
              try:
                  response = conv.wait_event(events.NewMessage(incoming=True,
                                                               from_users=507490514))
-                 await event.client.send_message(chat, '/nudes2d')
+                 await event.client.send_message(chat, '/nudes2d ' +user_msg)
                  response = await response
              except YouBlockedUserError:
                  await event.reply('<code>Разблокируй @murglar_bot</code>')
@@ -64,7 +64,7 @@ class nudes2dMod(loader.Module):
              try:
                  response = conv.wait_event(events.NewMessage(incoming=True,
                                                               from_users=507490514))
-                 await event.client.send_message(chat, '/nudes3d')
+                 await event.client.send_message(chat, '/nudes3d ' +user_msg)
                  response = await response
              except YouBlockedUserError:
                  await event.reply('<code>Разблокируй @murglar_bot</code>')
