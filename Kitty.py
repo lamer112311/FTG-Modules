@@ -1,34 +1,73 @@
-# made with love by justsayoriska
-import logging
-import requests
-from .. import loader
+#by @laciamemeframe
 
-logger = logging.getLogger(__name__)
+from telethon import events
+from telethon.errors.rpcerrorlist import YouBlockedUserError
+from .. import loader, utils
 
 
 def register(cb):
-    cb(KittyMod())
+	cb(AnimalsMod())
 
 
-class KittyMod(loader.Module):
-    """justsayoriska`s & demenkop kitties module"""
-    strings = {'name': 'Киски'}
+class AnimalsMod(loader.Module):
+	"""Фото животных из @pixelsetup_bot"""
 
-    def __init__(self):
-        self.name = self.strings['name']
-        self._me = None
-        self._ratelimit = []
+	strings = {'name': 'Животные'}
 
-    async def kittycmd(self, e):
-        """this coommand will send a random kitty picture using API"""
-        url = 'https://api.thecatapi.com/v1/images/search'
-        r = requests.get(url, allow_redirects=True)
-        r.headers['x-api-key'] = '97037ecc-6b34-4ca2-a072-adf1e4c74ace'
-        json = r.json()
-        for j in json:
-            kittyurl = j['url']
-            rs = requests.get(kittyurl, allow_redirects=True)
-            open('kotik.png', 'wb').write(rs.content)
-            await e.client.send_file(entity=await e.client.get_input_entity(e.chat_id),
-                                     file='kotik.png')
-            await e.delete()
+	def __init__(self):
+		self.name = self.strings['name']
+		self._me = None
+		self._ratelimit = []
+
+	async def client_ready(self, client, db):
+		self._db = db
+		self._client = client
+		self.me = await client.get_me()
+
+	async def kittycmd(self, event):
+         """.kitty"""
+         user_msg = """{}""".format(utils.get_args_raw(event))
+         global text
+         text = False
+         if event.fwd_from:
+             return
+             self_mess = True
+             if not user_msg:
+                 return 
+         chat = '@pixelsetup_bot'
+         await event.edit('<code>Обработка</code>')
+         async with event.client.conversation(chat) as conv:
+             try:
+                 response = conv.wait_event(events.NewMessage(incoming=True,
+                                                              from_users=787358569))
+                 await event.client.send_message(chat, '🐈pussy')
+                 response = await response
+             except YouBlockedUserError:
+                 await event.reply('<code>Разблокируй @pixelsetup_bot</code>')
+                 return
+             await event.delete()
+             await event.client.send_file(event.to_id, response.media)
+    
+	async def dogscmd(self, event):
+         """.dogs"""
+         user_msg = """{}""".format(utils.get_args_raw(event))
+         global text
+         text = False
+         if event.fwd_from:
+             return
+             self_mess = True
+             if not user_msg:
+                 return 
+         chat = '@pixelsetup_bot'
+         await event.edit('<code>Обработка</code>')
+         async with event.client.conversation(chat) as conv:
+             try:
+                 response = conv.wait_event(events.NewMessage(incoming=True,
+                                                              from_users=787358569))
+                 await event.client.send_message(chat, '🦮dogs')
+                 response = await response
+             except YouBlockedUserError:
+                 await event.reply('<code>Разблокируй @pixelsetup_bot</code>')
+                 return
+             await event.delete()
+             await event.client.send_file(event.to_id, response.media)  
