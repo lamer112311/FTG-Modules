@@ -28,11 +28,10 @@ class SkolkoMod(loader.Module):
     async def client_ready(self, client, db):
         self._db = db
         self._client = client
-        self.me = await client.get_me()
 
     async def skokcmd(self, message):
         """.skok <реплай на изображение.>"""
-        await message.delete()
+
         reply = await message.get_reply_message()
         if not reply:
             await message.edit("где реплай на медиа.")
@@ -42,6 +41,7 @@ class SkolkoMod(loader.Module):
                 await utils.answer(message, 'нет изображения.')
                 return
             what = haha(pic)
+            await message.delete()
             await message.client.send_file(message.to_id, what)
 
 def lol(background, image, cords, size):
@@ -53,12 +53,12 @@ def lol(background, image, cords, size):
 def haha(image):
     pics = requests.get("https://raw.githubusercontent.com/LaciaMemeFrame/FTG-Modules/master/IMG_0522.JPG")
     pics.raw.decode_content = True
-    img = Image.open(io.BytesIO(pics.content)).convert("RGB")
+    img = Image.open(io.BytesIO(pics.content)).convert("RGBA")
     lol(img, image, (20, 240), 150)
 
     out = io.BytesIO()
     out.name = "outsider.png"
-    img.save(out, format="png")
+    img.save(out)
     return out.getvalue()
 
 async def check_media(message, reply):
@@ -76,7 +76,7 @@ async def check_media(message, reply):
     if not data or data is None:
         return None
     else:
-        data = await message.client.download_file(data, bytes)
+        data = await message.client.download_media(data, bytes)
         try:
             Image.open(io.BytesIO(data))
             return data
