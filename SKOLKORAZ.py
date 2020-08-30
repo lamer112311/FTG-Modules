@@ -51,7 +51,7 @@ def lol(background, image, cords, size):
 
 
 def haha(image):
-    pics = requests.get("https://0x0.st/iEp7.jpg")
+    pics = requests.get("https://raw.githubusercontent.com/LaciaMemeFrame/FTG-Modules/master/IMG_0522.JPG")
     pics.raw.decode_content = True
     img = Image.open(io.BytesIO(pics.content)).convert("RGB")
     lol(img, image, (20, 240), 150)
