@@ -16,7 +16,7 @@ def register(cb):
 
 class ImgurMod(loader.Module):
     """ты еблан да?"""
-    strings = {'name': 'Imgur HAHA'}
+    strings = {'name': 'Imgur'}
 
     def __init__(self):
         self.name = self.strings['name']
