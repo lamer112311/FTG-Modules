@@ -22,6 +22,15 @@ class UpdownMod(loader.Module):
 
 	async def updowncmd(self, e):
 		text = utils.get_args_raw(e)
+		reply = await e.get_reply_message()
+		if not text:
+			if not reply:
+				await e.edit(".ɯɔʞǝɯ ǝɓɹ ̯nqıнɐƍǝ нʎоvʞ")
+				return
+			else:
+				text = reply.raw_text
+		else:
+			text = utils.get_args_raw(e)
 		text = text.replace("а", "ɐ")
 		text = text.replace("б", "ƍ")
 		text = text.replace("в", "ʚ")
