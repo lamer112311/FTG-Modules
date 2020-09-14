@@ -26,7 +26,7 @@ class demotivator2Mod(loader.Module):
         self.me = await client.get_me()
 
     async def demcmd(self, message):
-        """ .dem видео, фото или гиф"""
+        """ .dem фото или гиф"""
 
         reply = await message.get_reply_message()
         if not reply:
