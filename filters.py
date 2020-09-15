@@ -135,4 +135,4 @@ class FiltersMod(loader.Module):
                         respond.message, cmd = self.allmodules.dispatch(argspr[0], respond)
                         await cmd(respond)
                 else:
-                    await message.reply(value)
+                    await message.reply
