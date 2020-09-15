@@ -36,7 +36,7 @@ class demotivator2Mod(loader.Module):
         try:
            media = reply.media
         except:
-            await message.edit("<b>Ответ только на медиа</b>")
+            await message.edit("<b>Реплай только на медиа</b>")
             return           
 
         chat = '@super_rjaka_demotivator_bot'
