@@ -129,7 +129,7 @@ class FiltersMod(loader.Module):
                     if value.text.startswith(".") is False:
                         arg = value.text
                         exec = False
-                    respond = await message.respond(arg)
+                    respond = await message.reply(arg)
                     if exec is True:
                         argspr = arg.split(" ")
                         respond.message, cmd = self.allmodules.dispatch(argspr[0], respond)
