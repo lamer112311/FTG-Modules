@@ -28,7 +28,7 @@ class JacquesMod(loader.Module):
 	async def jcmd(self, message):
 		""".j <реплай на сообщение/свой текст>"""
 		
-		ufr = requests.get("https://github.com/Sad0ff/modules-ftg/raw/master/open-sans.ttf")
+		ufr = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/open-sans.ttf?raw=true")
 		f = ufr.content
 		
 		reply = await message.get_reply_message()
@@ -42,7 +42,7 @@ class JacquesMod(loader.Module):
 		else:
 			txt = utils.get_args_raw(message)
 		await message.edit("<b>Извинись, быдло...</b>")
-		pic = requests.get("jac.jpg")
+		pic = requests.get("https://raw.githubusercontent.com/LaciaMemeFrame/FTG-Modules/master/jac.jpg")
 		pic.raw.decode_content = True
 		img = Image.open(io.BytesIO(pic.content)).convert("RGB")
  
