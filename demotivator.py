@@ -27,7 +27,8 @@ class demotivator2Mod(loader.Module):
 
     async def demcmd(self, message):
         """ .dem фото или гиф"""
-
+        
+        args = utils.get_args_raw(message)
         reply = await message.get_reply_message()
         if not reply:
             await message.edit("<b>Реплай на медиа</b>")
@@ -44,7 +45,7 @@ class demotivator2Mod(loader.Module):
             try:
                 response = conv.wait_event(events.NewMessage(incoming=True, from_users=1016409811))
 			
-                await message.client.send_file(chat, media)  
+                await message.client.send_file(chat, media, caption = args)  
 				
                 response = await response
             except YouBlockedUserError:
