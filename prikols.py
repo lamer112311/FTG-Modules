@@ -156,7 +156,7 @@ def lol(background, image, cords, size):
 
 
 def mem(image):
-    pics = requests.get("https://0x0.st/i6m3.jpg" )
+    pics = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/mem.jpg?raw=true" )
     pics.raw.decode_content = True
     img = Image.open(io.BytesIO(pics.content)).convert("RGB")
     lol(img, image, (1, 1), 410)
@@ -196,7 +196,7 @@ def lol(background, image, cords, size):
 
 
 def mem1(image):
-    pics = requests.get("https://0x0.st/i6df.jpg" )
+    pics = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/mem1.jpg?raw=true" )
     pics.raw.decode_content = True
     img = Image.open(io.BytesIO(pics.content)).convert("RGB")
     lol(img, image, (1, 1), 160)
@@ -236,7 +236,7 @@ def lol(background, image, cords, size):
 
 
 def mem2(image):
-    pics = requests.get("https://0x0.st/iI1p.jpg" )
+    pics = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/mem2.jpg?raw=true" )
     pics.raw.decode_content = True
     img = Image.open(io.BytesIO(pics.content)).convert("RGB")
     lol(img, image, (1, 1), 650)
@@ -276,7 +276,7 @@ def lol(background, image, cords, size):
 
 
 def mem3(image):
-    pics = requests.get("https://0x0.st/iIvc.jpg" )
+    pics = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/mem3.jpg?raw=true" )
     pics.raw.decode_content = True
     img = Image.open(io.BytesIO(pics.content)).convert("RGB")
     lol(img, image, (1, 1), 580)
@@ -315,7 +315,7 @@ def lol(background, image, cords, size):
 
 
 def mem4(image):
-    pics = requests.get("https://0x0.st/iIvA.jpg" )
+    pics = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/mem4.jpg?raw=true" )
     pics.raw.decode_content = True
     img = Image.open(io.BytesIO(pics.content)).convert("RGB")
     lol(img, image, (1, 1), 580)
@@ -355,7 +355,7 @@ def lol(background, image, cords, size):
 
 
 def mem5(image):
-    pics = requests.get("https://0x0.st/iIgT.jpg" )
+    pics = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/mem5.jpg?raw=true" )
     pics.raw.decode_content = True
     img = Image.open(io.BytesIO(pics.content)).convert("RGB")
     lol(img, image, (105, 1), 440)
@@ -395,7 +395,7 @@ def lol(background, image, cords, size):
 
 
 def mem6(image):
-    pics = requests.get("https://0x0.st/iIgy.jpg" )
+    pics = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/mem6.jpg?raw=true" )
     pics.raw.decode_content = True
     img = Image.open(io.BytesIO(pics.content)).convert("RGB")
     lol(img, image, (160, 200), 90)
@@ -435,7 +435,7 @@ def lol(background, image, cords, size):
 
 
 def mem7(image):
-    pics = requests.get("https://0x0.st/iIgt.jpg" )
+    pics = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/mem7.jpg?raw=true )
     pics.raw.decode_content = True
     img = Image.open(io.BytesIO(pics.content)).convert("RGB")
     lol(img, image, (160, 200), 90)
