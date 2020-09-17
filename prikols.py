@@ -435,7 +435,7 @@ def lol(background, image, cords, size):
 
 
 def mem7(image):
-    pics = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/mem7.jpg?raw=true)
+    pics = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/mem7.jpg?raw=true" )
     pics.raw.decode_content = True
     img = Image.open(io.BytesIO(pics.content)).convert("RGB")
     lol(img, image, (160, 200), 90)
