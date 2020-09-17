@@ -148,6 +148,20 @@ class PrikolMod(loader.Module):
                 return
             what = mem7(pic)
             await message.client.send_file(message.to_id, what)
+
+    async def drcmd(self, message):
+        """.dr и реплай на картинку. мне и одного друга достаточно, если он"""
+        await message.delete()
+        reply = await message.get_reply_message()
+        if not reply:
+            await message.edit("реплай на картиночку, пожалуйста")
+        else:
+            pic = await check_media1(message, reply)
+            if not pic:
+                await utils.answer(message, 'это не картиночка')
+                return
+            what = mem8(pic)
+            await message.client.send_file(message.to_id, what)
             
 def lol(background, image, cords, size):
     overlay = Image.open(BytesIO(image))
