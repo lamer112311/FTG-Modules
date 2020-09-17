@@ -322,20 +322,6 @@ async def check_media3(message, reply):
         except:
             return None
 
-    async def drcmd(self, message):
-        """.dr и реплай на картинку.  забудьте твари"""
-        await message.delete()
-        reply = await message.get_reply_message()
-        if not reply:
-            await message.edit("реплай на картиночку, пожалуйста")
-        else:
-            pic = await check_media1(message, reply)
-            if not pic:
-                await utils.answer(message, 'это не картиночка')
-                return
-            what = mem8(pic)
-            await message.client.send_file(message.to_id, what)
-
 def lol(background, image, cords, size):
     overlay = Image.open(BytesIO(image))
     overlay = overlay.resize((size * 2, size * 1))
