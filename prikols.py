@@ -308,6 +308,20 @@ async def check_media3(message, reply):
         except:
             return None
 
+    async def drcmd(self, message):
+        """.dr и реплай на картинку.  забудьте твари"""
+        await message.delete()
+        reply = await message.get_reply_message()
+        if not reply:
+            await message.edit("реплай на картиночку, пожалуйста")
+        else:
+            pic = await check_media1(message, reply)
+            if not pic:
+                await utils.answer(message, 'это не картиночка')
+                return
+            what = mem8(pic)
+            await message.client.send_file(message.to_id, what)
+
 def lol(background, image, cords, size):
     overlay = Image.open(BytesIO(image))
     overlay = overlay.resize((size * 2, size * 1))
@@ -465,4 +479,43 @@ async def check_media7(message, reply):
             Image.open(io.BytesIO(data))
             return data
         except:
-            return None            
+            return None 
+
+def lol(background, image, cords, size):
+    overlay = Image.open(BytesIO(image))
+    overlay = overlay.resize((size * 2, size * 1))
+    background.paste(overlay, cords)
+
+
+def mem8(image):
+    pics = requests.get("https://raw.githubusercontent.com/ggrnaaa/ftgm0du1es/master/%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8/IMG_20200917_171328_932.jpg" )
+    pics.raw.decode_content = True
+    img = Image.open(io.BytesIO(pics.content)).convert("RGB")
+    lol(img, image, (370, 550), 400)
+
+    out = io.BytesIO()
+    out.name = "outsider.png"
+    img.save(out, format="png")
+    return out.getvalue()
+
+async def check_media7(message, reply):
+    if reply and reply.media:
+        if reply.photo:
+            data = reply.photo
+        elif reply.document:
+            if reply.gif or reply.video or reply.audio or reply.voice:
+                return None
+            data = reply.media.document
+        else:
+            return None
+    else:
+        return None
+    if not data or data is None:
+        return None
+    else:
+        data = await message.client.download_file(data, bytes)
+        try:
+            Image.open(io.BytesIO(data))
+            return data
+        except:
+            return None           
