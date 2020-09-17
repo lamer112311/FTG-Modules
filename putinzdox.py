@@ -35,5 +35,24 @@ class PutinZdoxMod(loader.Module):
         ))
         await message.delete()
         await message.client.send_file(message.to_id, result.messages[0].media)
+
+    async def repomemcmd(self, message):
+        """
+        Рандомные мемы из @repomeme
+        """
+        await message.edit("<b>Репуем</b>")
+        chat = '@repomem'
+        result = await message.client(functions.messages.GetHistoryRequest(
+        peer=chat,
+        offset_id=0,
+        offset_date=datetime.datetime.now(),
+        add_offset=random.choice([1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,61,63,65,67,69,71,73,75,77,79,81,83,85,87,89,91,93,95,97,99,101]),
+        limit=1,
+        max_id=0,
+        min_id=0,
+        hash=0
+        ))
+        await message.delete()
+        await message.client.send_file(message.to_id, result.messages[0].media)
     
             
