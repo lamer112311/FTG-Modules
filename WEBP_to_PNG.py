@@ -48,7 +48,7 @@ class WEBPtoPNGMod(loader.Module):
         image.save(image_stream, "WEBP")
         image_stream.seek(0)
         await self.client.delete_messages(message.to_id, message.id)
-        await self.client.send_file(message.to_id, image_stream, force_document = True)
+        await self.client.send_file(message.to_id, image_stream, force_document = False)
     
     @loader.sudo
     async def jtpcmd(self, message):
