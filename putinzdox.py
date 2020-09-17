@@ -21,7 +21,7 @@ class PutinZdoxMod(loader.Module):
         """
         Рандомные мемы из @PutinZdox
         """
-        await message.edit("<b>ПУТИН СДОХ!!!!!!!!/b>")
+        await message.edit("<b>ПУТИН СДОХ!!!!!!!!</b>")
         chat = '@PutinZdox'
         result = await message.client(functions.messages.GetHistoryRequest(
         peer=chat,
