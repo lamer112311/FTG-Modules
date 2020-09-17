@@ -38,7 +38,7 @@ class PutinZdoxMod(loader.Module):
 
     async def repomemcmd(self, message):
         """
-        Рандомные мемы из @repomeme
+        Рандомные мемы из @repomem 
         """
         await message.edit("<b>Репуем</b>")
         chat = '@repomem'
