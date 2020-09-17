@@ -491,7 +491,7 @@ def mem8(image):
     pics = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/mem8.jpg?raw=true" )
     pics.raw.decode_content = True
     img = Image.open(io.BytesIO(pics.content)).convert("RGB")
-    lol(img, image, (370, 550), 400)
+    lol(img, image, (370, 560), 400)
 
     out = io.BytesIO()
     out.name = "outsider.png"
