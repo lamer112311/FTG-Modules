@@ -5,17 +5,10 @@ from telethon import events
 import logging
 import datetime
 import time
-import asyncio
 from asyncio import sleep
-
-
 logger = logging.getLogger(__name__)
-
-
 def register(cb):
     cb(SpamAllMod())
-
-
 @loader.tds
 class SpamAllMod(loader.Module):
     """а)"""
@@ -32,15 +25,23 @@ class SpamAllMod(loader.Module):
     async def spamallcmd(self, message):
         """.spamall <текст для спама> пишет всем юзерам в чате"""
         args = utils.get_args_raw(message)
+        reply = await message.get_reply_message()
+        #await message.delete()
         users = await message.client.get_participants(message.to_id)
-        if not args:
+        if not args and not reply:
             await utils.answer(message, "а чем спамить будем, ало.")
             return
         for user in users:
-            await sleep(0.2)
-            try:
-                await message.client.send_message(str(user.username), args)
-            except:
-                await sleep(0.1)
+            if not user.bot:
+                try:
+                    if reply:
+                        if reply and not reply.text:
+                            await message.client.send_file(str(user.username), reply)
+                        else:
+                            await message.client.send_message(str(user.username), reply.text)
+                    else:
+                        await message.client.send_message(str(user.username), args)
+                except:
+                    await sleep(0.1)
 
 
