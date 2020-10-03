@@ -25,7 +25,7 @@ class AnimalsMod(loader.Module):
 		self.me = await client.get_me()
 
 	async def kittycmd(self, event):
-         """.kitty"""
+         """.cat"""
          user_msg = """{}""".format(utils.get_args_raw(event))
          global text
          text = False
@@ -40,7 +40,7 @@ class AnimalsMod(loader.Module):
              try:
                  response = conv.wait_event(events.NewMessage(incoming=True,
                                                               from_users=1171589586))
-                 await event.client.send_message(chat, '/kitty')
+                 await event.client.send_message(chat, '/cat')
                  response = await response
              except YouBlockedUserError:
                  await event.reply('<code>Разблокируй @LaciaMemeFrame_bot</code>')
@@ -49,7 +49,7 @@ class AnimalsMod(loader.Module):
              await event.client.send_file(event.to_id, response.media)
     
 	async def dogscmd(self, event):
-         """.dogs"""
+         """.dog"""
          user_msg = """{}""".format(utils.get_args_raw(event))
          global text
          text = False
@@ -64,7 +64,7 @@ class AnimalsMod(loader.Module):
              try:
                  response = conv.wait_event(events.NewMessage(incoming=True,
                                                               from_users=1171589586))
-                 await event.client.send_message(chat, '/dogs')
+                 await event.client.send_message(chat, '/dog')
                  response = await response
              except YouBlockedUserError:
                  await event.reply('<code>Разблокируй @LaciaMemeFrame_bot</code>')
