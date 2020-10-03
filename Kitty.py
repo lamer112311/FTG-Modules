@@ -10,7 +10,7 @@ def register(cb):
 
 
 class AnimalsMod(loader.Module):
-	"""Фото животных из @pixelsetup_bot"""
+	"""Фото животных из @LaciaMemeFrame_bot"""
 
 	strings = {'name': 'Животные'}
 
