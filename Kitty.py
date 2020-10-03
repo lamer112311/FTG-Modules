@@ -24,7 +24,7 @@ class AnimalsMod(loader.Module):
 		self._client = client
 		self.me = await client.get_me()
 
-	async def kittycmd(self, event):
+	async def catcmd(self, event):
          """.cat"""
          user_msg = """{}""".format(utils.get_args_raw(event))
          global text
@@ -48,7 +48,7 @@ class AnimalsMod(loader.Module):
              await event.delete()
              await event.client.send_file(event.to_id, response.media)
     
-	async def dogscmd(self, event):
+	async def dogcmd(self, event):
          """.dog"""
          user_msg = """{}""".format(utils.get_args_raw(event))
          global text
