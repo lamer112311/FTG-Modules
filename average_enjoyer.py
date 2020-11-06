@@ -29,7 +29,7 @@ class AverageMod(loader.Module):
 		ufr = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/open-sans.ttf?raw=true")
 		f = ufr.content
 
-		pic = requests.get("https://raw.githubusercontent.com/McMuFln/FTG-mods/main/enjoyer.png")
+		pic = requests.get("https://github.com/LaciaMemeFrame/FTG-Modules/blob/master/enjoyer.png?raw=true")
 		await message.edit("<b>Извиняюсь.</b>")
 		await message.edit("<b>Извиняюсь..</b>")
 		await message.edit("<b>Извиняюсь...</b>")
